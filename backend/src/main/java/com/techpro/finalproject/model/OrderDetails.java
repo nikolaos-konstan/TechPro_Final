@@ -6,28 +6,29 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
-
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name="orders")
-public class Order {
+@Table(name="order_details")
+public class OrderDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column (name="OrderID")
-    private Long orderId;
+    @Column (name="OrderDetailsID")
+    private Long orderDetailsId;
 
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="PersonID")
-    private People people;
+    @JoinColumn(name="OrderID")
+    private Order order;
 
-    //@Column(name="PersonID")
-    //private Long personID;
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="ItemID")
+    private Item item;
 
-    @Column(name="OrderDate")
-    private LocalDateTime orderDate;
+    @Column(name="Quantity")
+    private int quantity;
+
 }
