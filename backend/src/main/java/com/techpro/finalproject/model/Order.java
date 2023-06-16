@@ -30,4 +30,9 @@ public class Order {
 
     @Column(name="OrderDate")
     private LocalDateTime orderDate;
+
+    @PrePersist
+    private void setOrderDate() {
+        this.orderDate = LocalDateTime.now();
+    }
 }
