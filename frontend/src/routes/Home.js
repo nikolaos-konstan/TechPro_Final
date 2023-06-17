@@ -30,6 +30,7 @@ export const Home = () => {
               <th scope="col">First Name</th>
               <th scope="col">Last Name</th>
               <th scope="col">Email</th>
+              <th scope="col">Action</th>
             </tr>
           </thead>
           <tbody>
@@ -41,6 +42,11 @@ export const Home = () => {
                 <td>{people.firstName}</td>
                 <td>{people.lastName}</td>
                 <td>{people.email}</td>
+                <td>
+                  <button className="btn btn-primary mx-2">View</button>
+                  <button className="btn btn-outline-primary mx-2">Edit</button>
+                  <button className="btn btn-danger mx-2">Delete</button>
+                </td>
               </tr>
             ))}
           </tbody>
