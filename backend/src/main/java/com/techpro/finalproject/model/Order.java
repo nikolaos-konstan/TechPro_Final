@@ -18,15 +18,13 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column (name="OrderID")
-    private Long orderId;
+    private Integer orderId;
 
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @ManyToOne
     @JoinColumn(name="PersonID")
     private People people;
 
-    //@Column(name="PersonID")
-    //private Long personID;
 
     @Column(name="OrderDate")
     private LocalDateTime orderDate;

@@ -26,13 +26,13 @@ public class OrderController {
     }
 
     @GetMapping("/orders/{id}")
-    Order getOrdersById(@PathVariable Long id){
+    Order getOrdersById(@PathVariable Integer id){
         return orderRepository.findById(id)
                 .orElseThrow(()->new OrderNotFoundException(id));
     }
 
     @DeleteMapping("/orders/{id}")
-    String deleteOrder(@PathVariable Long id){
+    String deleteOrder(@PathVariable Integer id){
         if(!orderRepository.existsById(id)){
             throw new OrderNotFoundException(id);
         }

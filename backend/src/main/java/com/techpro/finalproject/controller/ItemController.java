@@ -28,13 +28,13 @@ public class ItemController {
     }
 
     @GetMapping("/items/{id}")
-    Item getItemById(@PathVariable Long id) {
+    Item getItemById(@PathVariable Integer id) {
         return itemRepository.findById(id)
                 .orElseThrow(() -> new ItemNotFoundException(id));
     }
 
     @PutMapping("/items/{id}")
-    Item updateItem(@RequestBody Item newItem, @PathVariable Long id) {
+    Item updateItem(@RequestBody Item newItem, @PathVariable Integer id) {
         return itemRepository.findById(id)
                 .map(item -> {
 
@@ -44,7 +44,7 @@ public class ItemController {
     }
 
     @DeleteMapping("/items/{id}")
-    String deleteItem(@PathVariable Long id) {
+    String deleteItem(@PathVariable Integer id) {
         if (!itemRepository.existsById(id)) {
             throw new ItemNotFoundException(id);
         }

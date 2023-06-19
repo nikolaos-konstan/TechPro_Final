@@ -26,13 +26,13 @@ public class PeopleController {
     }
 
     @GetMapping("/people/{id}")
-    People getPeopleById(@PathVariable Long id){
+    People getPeopleById(@PathVariable Integer id){
         return peopleRepository.findById(id)
                 .orElseThrow(()->new PersonNotFoundException(id));
     }
 
     @PutMapping("/people/{id}")
-    People updatePeople(@RequestBody People newPeople, @PathVariable Long id){
+    People updatePeople(@RequestBody People newPeople, @PathVariable Integer id){
             return peopleRepository.findById(id)
                     .map(people -> {
 
@@ -44,7 +44,7 @@ public class PeopleController {
     }
 
     @DeleteMapping("/people/{id}")
-    String deletePeople(@PathVariable Long id){
+    String deletePeople(@PathVariable Integer id){
         if(!peopleRepository.existsById(id)){
             throw new PersonNotFoundException(id);
         }

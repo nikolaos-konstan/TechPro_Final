@@ -25,13 +25,13 @@ public class OrderDetailsController {
     }
 
     @GetMapping("/orderdetails/{id}")
-    OrderDetails getOrderDetailsById(@PathVariable Long id){
+    OrderDetails getOrderDetailsById(@PathVariable Integer id){
         return orderDetailsRepository.findById(id)
                 .orElseThrow(()->new OrderDetailsNotFoundException(id));
     }
 
     @PutMapping("/orderdetails/{id}")
-    OrderDetails updateOrderDetails(@RequestBody OrderDetails newOrderDetails, @PathVariable Long id){
+    OrderDetails updateOrderDetails(@RequestBody OrderDetails newOrderDetails, @PathVariable Integer id){
         return orderDetailsRepository.findById(id)
                 .map(orderDetails -> {
 
@@ -41,7 +41,7 @@ public class OrderDetailsController {
     }
 
     @DeleteMapping("/orderdetails/{id}")
-    String deleteOrderDetails(@PathVariable Long id){
+    String deleteOrderDetails(@PathVariable Integer id){
         if(!orderDetailsRepository.existsById(id)){
             throw new OrderDetailsNotFoundException(id);
         }

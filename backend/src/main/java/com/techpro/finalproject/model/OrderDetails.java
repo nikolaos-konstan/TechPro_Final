@@ -16,7 +16,7 @@ public class OrderDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column (name="OrderDetailsID")
-    private Long orderDetailsId;
+    private Integer orderDetailsId;
 
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @ManyToOne
