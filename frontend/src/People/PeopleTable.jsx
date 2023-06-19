@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import "./PeopleTable.css";
 
 export const PeopleTable = () => {
   const [people, setPeople] = useState([]);
