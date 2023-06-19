@@ -1,11 +1,8 @@
 package com.techpro.finalproject.controller;
 
-
 import com.techpro.finalproject.model.OrderDetails;
-
-
+import com.techpro.finalproject.exception.OrderDetailsNotFoundException;
 import com.techpro.finalproject.repository.OrderDetailsRepository;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,9 +20,33 @@ public class OrderDetailsController {
     }
 
     @GetMapping("/orderdetails/")
-    List<OrderDetails> getAllPeople(){
+    List<OrderDetails> getAllOrderDetails(){
         return orderDetailsRepository.findAll();
     }
 
+    @GetMapping("/orderdetails/{id}")
+    OrderDetails getOrderDetailsById(@PathVariable Long id){
+        return orderDetailsRepository.findById(id)
+                .orElseThrow(()->new OrderDetailsNotFoundException(id));
+    }
+
+    @PutMapping("/orderdetails/{id}")
+    OrderDetails updateOrderDetails(@RequestBody OrderDetails newOrderDetails, @PathVariable Long id){
+        return orderDetailsRepository.findById(id)
+                .map(orderDetails -> {
+
+                    orderDetails.setQuantity(newOrderDetails.getQuantity());
+                    return orderDetailsRepository.save(orderDetails);
+                }).orElseThrow(()->new OrderDetailsNotFoundException(id));
+    }
+
+    @DeleteMapping("/orderdetails/{id}")
+    String deleteOrderDetails(@PathVariable Long id){
+        if(!orderDetailsRepository.existsById(id)){
+            throw new OrderDetailsNotFoundException(id);
+        }
+        orderDetailsRepository.deleteById(id);
+        return "Person with id: "+id+" has been deleted successfully.";
+    }
 
 }
