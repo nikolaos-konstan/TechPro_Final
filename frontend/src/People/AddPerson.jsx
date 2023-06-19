@@ -25,6 +25,14 @@ export const AddPerson = ({ loadPeople }) => {
     });
     loadPeople();
   };
+
+  const onClear = () => {
+    setPerson({
+      firstName: "",
+      lastName: "",
+      email: "",
+    });
+  };
   return (
     <div>
       <form onSubmit={(e) => onSubmitData(e)}>
@@ -71,7 +79,9 @@ export const AddPerson = ({ loadPeople }) => {
           />
         </div>
         <button type="submit">Submit</button>
-        <button type="submit">Clear</button>
+        <button onClick={onClear} type="submit">
+          Clear
+        </button>
       </form>
     </div>
   );
