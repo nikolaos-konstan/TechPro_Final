@@ -21,7 +21,7 @@ public class Order {
     private Long orderId;
 
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name="PersonID")
     private People people;
 
