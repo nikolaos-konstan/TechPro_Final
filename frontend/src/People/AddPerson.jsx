@@ -21,7 +21,7 @@ export const AddPerson = () => {
   };
   return (
     <div>
-      <form on onSubmit={(e) => onSubmitData(e)}>
+      <form onSubmit={(e) => onSubmitData(e)}>
         <h2>Add Person</h2>
         <div className="form-group">
           <label htmlFor="first-name">First Name:</label>
