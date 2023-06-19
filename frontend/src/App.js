@@ -1,6 +1,7 @@
 import "./App.css";
-import { People } from "./People/People";
+
 import { Navbar } from "./layout/Navbar";
+import { People } from "./pages/People";
 
 function App() {
   return (
