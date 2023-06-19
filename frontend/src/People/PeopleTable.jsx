@@ -1,5 +1,6 @@
 import axios from "axios";
 import "./PeopleTable.css";
+import { Link } from "react-router-dom";
 
 export const PeopleTable = ({ people, loadPeople }) => {
   const deletePerson = async (id) => {
@@ -27,7 +28,7 @@ export const PeopleTable = ({ people, loadPeople }) => {
               <td>{person.lastName}</td>
               <td>{person.email}</td>
               <td>
-                <button>Edit</button>
+                <Link to={`/persondetails/${person.personId}`}>Details</Link>
                 <button onClick={() => deletePerson(person.personId)}>
                   Delete
                 </button>

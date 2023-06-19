@@ -2,6 +2,7 @@ import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Navbar } from "./layout/Navbar";
 import { People } from "./pages/People";
+import { PersonDetails } from "./pages/PersonDetails";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -26,6 +27,7 @@ function App() {
             path="/people"
             element={<People people={people} loadPeople={loadPeople} />}
           />
+          <Route exact path="/persondetails/:id" element={<PersonDetails />} />
         </Routes>
       </Router>
     </div>
