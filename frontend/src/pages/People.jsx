@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { AddPerson } from "../People/AddPerson";
+
 import { PeopleTable } from "../People/PeopleTable";
 import axios from "axios";
 
@@ -16,7 +16,6 @@ export const People = () => {
   return (
     <div>
       <PeopleTable people={people} loadPeople={loadPeople} />
-      <AddPerson loadPeople={loadPeople} />
     </div>
   );
 };

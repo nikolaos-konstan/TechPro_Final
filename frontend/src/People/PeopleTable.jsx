@@ -1,5 +1,6 @@
 import axios from "axios";
 import "./PeopleTable.css";
+import { AddPerson } from "./AddPerson";
 
 export const PeopleTable = ({ people, loadPeople }) => {
   const deletePerson = async (id) => {
@@ -36,6 +37,7 @@ export const PeopleTable = ({ people, loadPeople }) => {
           ))}
         </tbody>
       </table>
+      <AddPerson loadPeople={loadPeople} />
     </div>
   );
 };
