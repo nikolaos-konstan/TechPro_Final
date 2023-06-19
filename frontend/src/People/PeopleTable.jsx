@@ -1,6 +1,11 @@
+import axios from "axios";
 import "./PeopleTable.css";
 
-export const PeopleTable = ({ people }) => {
+export const PeopleTable = ({ people, loadPeople }) => {
+  const deletePerson = async (id) => {
+    await axios.delete(`http://localhost:8080/people/${id}`);
+    loadPeople();
+  };
   return (
     <div>
       <table>
@@ -23,7 +28,9 @@ export const PeopleTable = ({ people }) => {
               <td>{person.email}</td>
               <td>
                 <button>Edit</button>
-                <button>Delete</button>
+                <button onClick={() => deletePerson(person.personId)}>
+                  Delete
+                </button>
               </td>
             </tr>
           ))}

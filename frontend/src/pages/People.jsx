@@ -15,7 +15,7 @@ export const People = () => {
   };
   return (
     <div>
-      <PeopleTable people={people} />
+      <PeopleTable people={people} loadPeople={loadPeople} />
       <AddPerson loadPeople={loadPeople} />
     </div>
   );
