@@ -1,17 +1,38 @@
+import { useState } from "react";
 import "./AddPerson.css";
+import axios from "axios";
 
 export const AddPerson = () => {
+  const [person, setPerson] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+  });
+
+  const { firstName, lastName, email } = person;
+
+  const onInputChange = (e) => {
+    setPerson({ ...person, [e.target.name]: e.target.value });
+  };
+
+  const onSubmitData = async (e) => {
+    e.preventDefault();
+    await axios.post("http://localhost:8080/people", person);
+  };
   return (
     <div>
-      <form>
+      <form on onSubmit={(e) => onSubmitData(e)}>
         <h2>Add Person</h2>
         <div className="form-group">
           <label htmlFor="first-name">First Name:</label>
           <input
-            type="text"
+            type={"text"}
             id="first-name"
-            name="first-name"
-            pattern="[A-Za-z]+"
+            placeholder="Enter your first name"
+            name="firstName"
+            value={firstName}
+            onChange={(e) => onInputChange(e)}
+            // pattern="[A-Za-z]+"
             maxLength="255"
             required
           />
@@ -19,10 +40,13 @@ export const AddPerson = () => {
         <div className="form-group">
           <label htmlFor="last-name">Last Name:</label>
           <input
-            type="text"
+            type={"text"}
             id="last-name"
-            name="last-name"
-            pattern="[A-Za-z]+"
+            placeholder="Enter your last name"
+            name="lastName"
+            value={lastName}
+            onChange={(e) => onInputChange(e)}
+            //pattern="[A-Za-z]+"
             maxLength="255"
             required
           />
@@ -30,14 +54,18 @@ export const AddPerson = () => {
         <div className="form-group">
           <label htmlFor="email">Email:</label>
           <input
-            type="email"
+            type={"email"}
             id="email"
+            placeholder="Enter your email"
             name="email"
+            value={email}
+            onChange={(e) => onInputChange(e)}
             maxLength="255"
             required
           />
         </div>
         <button type="submit">Submit</button>
+        <button type="submit">Clear</button>
       </form>
     </div>
   );
