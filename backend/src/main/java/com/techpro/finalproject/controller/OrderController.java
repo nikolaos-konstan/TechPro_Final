@@ -1,13 +1,10 @@
 package com.techpro.finalproject.controller;
 
+import com.techpro.finalproject.exception.OrderNotFoundException;
 import com.techpro.finalproject.model.Order;
 import com.techpro.finalproject.repository.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,4 +24,20 @@ public class OrderController {
     List<Order> getAllOrders(){
         return orderRepository.findAll();
     }
+
+    @GetMapping("/orders/{id}")
+    Order getOrdersById(@PathVariable Long id){
+        return orderRepository.findById(id)
+                .orElseThrow(()->new OrderNotFoundException(id));
+    }
+
+    @DeleteMapping("/orders/{id}")
+    String deleteOrder(@PathVariable Long id){
+        if(!orderRepository.existsById(id)){
+            throw new OrderNotFoundException(id);
+        }
+        orderRepository.deleteById(id);
+        return "Order with id: "+id+" has been deleted successfully.";
+    }
+
 }
