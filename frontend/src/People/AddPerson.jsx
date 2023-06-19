@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./AddPerson.css";
 import axios from "axios";
 
-export const AddPerson = () => {
+export const AddPerson = ({ loadPeople }) => {
   const [person, setPerson] = useState({
     firstName: "",
     lastName: "",
@@ -18,6 +18,12 @@ export const AddPerson = () => {
   const onSubmitData = async (e) => {
     e.preventDefault();
     await axios.post("http://localhost:8080/people", person);
+    setPerson({
+      firstName: "",
+      lastName: "",
+      email: "",
+    });
+    loadPeople();
   };
   return (
     <div>
