@@ -46,7 +46,7 @@ export const AddPerson = ({ loadPeople }) => {
             name="firstName"
             value={firstName}
             onChange={(e) => onInputChange(e)}
-            // pattern="[A-Za-z]+"
+            pattern="[A-Za-z]+"
             maxLength="255"
             required
           />
@@ -60,7 +60,7 @@ export const AddPerson = ({ loadPeople }) => {
             name="lastName"
             value={lastName}
             onChange={(e) => onInputChange(e)}
-            //pattern="[A-Za-z]+"
+            pattern="[A-Za-z]+"
             maxLength="255"
             required
           />
