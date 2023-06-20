@@ -1,9 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ColorBox } from "../Items/ColorBox";
 import "./Items.css";
+import axios from "axios";
 
-export const Items = ({ items }) => {
-  const [item, setItem] = useState("");
+export const Items = ({ items, loadItems }) => {
+  const [item, setItem] = useState({
+    itemName: "",
+  });
+
+  useEffect(() => {
+    generateRandomColor();
+  }, []);
+
   const generateRandomColor = () => {
     const letters = "0123456789ABCDEF";
     let color = "#";
@@ -12,19 +20,35 @@ export const Items = ({ items }) => {
       color += letters[Math.floor(Math.random() * 16)];
     }
 
-    setItem(color);
-    console.log(item);
+    setItem({
+      itemName: color,
+    });
+  };
+
+  const postItem = async (e) => {
+    e.preventDefault();
+    await axios.post("http://localhost:8080/items", item);
+    generateRandomColor();
+    loadItems();
+  };
+
+  const deleteItem = async (id) => {
+    await axios.delete(`http://localhost:8080/items/${id}`);
+    loadItems();
   };
 
   return (
     <div>
       <h1>Items</h1>
-      <button onClick={generateRandomColor} className="add-button">
+      <button onClick={postItem} className="add-button">
         Add Colour
       </button>
       <div className="box-container">
         {items.map((name) => (
-          <ColorBox name={name.itemName} />
+          <div>
+            <ColorBox name={name.itemName} />
+            <button onClick={() => deleteItem(name.itemId)}>Delete</button>
+          </div>
         ))}
       </div>
     </div>

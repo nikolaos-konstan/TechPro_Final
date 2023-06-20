@@ -65,7 +65,11 @@ function App() {
               />
             }
           />
-          <Route exact path="/items" element={<Items items={items} />} />
+          <Route
+            exact
+            path="/items"
+            element={<Items items={items} loadItems={loadItems} />}
+          />
           <Route exact path="/persondetails/:id" element={<PersonDetails />} />
         </Routes>
       </Router>
