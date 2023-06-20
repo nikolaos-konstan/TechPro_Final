@@ -8,6 +8,7 @@ import axios from "axios";
 import { Orders } from "./pages/Orders";
 import { Home } from "./pages/Home";
 import { Items } from "./pages/Items";
+import { About } from "./pages/About";
 
 function App() {
   const [people, setPeople] = useState([]);
@@ -45,7 +46,7 @@ function App() {
         <Routes>
           <Route
             exact
-            path="/home"
+            path=""
             element={<Home people={people} orders={orders} items={items} />}
           />
           <Route
@@ -70,6 +71,7 @@ function App() {
             path="/items"
             element={<Items items={items} loadItems={loadItems} />}
           />
+          <Route exact path="/about" element={<About />} />
           <Route exact path="/persondetails/:id" element={<PersonDetails />} />
         </Routes>
       </Router>

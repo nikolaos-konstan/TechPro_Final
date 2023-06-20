@@ -1,14 +1,3 @@
-* {
-  padding: 0;
-  margin: 0;
-  border: 0;
-  box-sizing: border-box;
-}
-
-:root {
-  --theme: #f7d89e;
-}
-
 .container-orderspage {
   background-color: var(--theme);
   display: grid;
