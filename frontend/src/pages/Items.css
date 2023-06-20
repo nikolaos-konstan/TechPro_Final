@@ -21,6 +21,10 @@ body {
   background-color: #aaaaaa;
 }
 
+.box-container {
+  display: flex;
+}
+
 /*Add-button*/
 .add-button {
   width: 50px;
