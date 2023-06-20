@@ -5,6 +5,7 @@ import { People } from "./pages/People";
 import { PersonDetails } from "./pages/PersonDetails";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Orders } from "./pages/Orders";
 
 function App() {
   const [people, setPeople] = useState([]);
@@ -26,6 +27,11 @@ function App() {
             exact
             path="/people"
             element={<People people={people} loadPeople={loadPeople} />}
+          />
+          <Route
+            exact
+            path="/allorders"
+            element={<Orders people={people} loadPeople={loadPeople} />}
           />
           <Route exact path="/persondetails/:id" element={<PersonDetails />} />
         </Routes>

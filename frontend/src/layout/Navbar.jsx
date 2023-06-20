@@ -11,7 +11,7 @@ export const Navbar = () => {
           </li>
           <li className="section">
             <Link to="/people">People</Link>
-            <a href="#">Orders</a>
+            <a href="/allorders">All Orders</a>
             <a href="#">Items</a>
           </li>
           <li className="section">
