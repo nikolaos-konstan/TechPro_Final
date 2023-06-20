@@ -12,11 +12,13 @@ function App() {
   const [people, setPeople] = useState([]);
   const [orders, setOrders] = useState([]);
   const [items, setItems] = useState([]);
+  const [orderDetails, setOrderDetails] = useState([]);
 
   useEffect(() => {
     loadPeople();
     loadOrders();
     loadItems();
+    loadOrderDetails();
   }, []);
   const loadPeople = async () => {
     const result = await axios.get("http://localhost:8080/people/");
@@ -29,6 +31,10 @@ function App() {
   const loadItems = async () => {
     const result = await axios.get("http://localhost:8080/items/");
     setItems(result.data);
+  };
+  const loadOrderDetails = async () => {
+    const result = await axios.get("http://localhost:8080/orderdetails/");
+    setOrderDetails(result.data);
   };
 
   return (
@@ -49,7 +55,14 @@ function App() {
           <Route
             exact
             path="/allorders"
-            element={<Orders orders={orders} loadOrders={loadOrders} />}
+            element={
+              <Orders
+                orders={orders}
+                loadOrders={loadOrders}
+                orderDetails={orderDetails}
+                loadOrderDetails={loadOrderDetails}
+              />
+            }
           />
           <Route exact path="/persondetails/:id" element={<PersonDetails />} />
         </Routes>
