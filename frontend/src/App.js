@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Orders } from "./pages/Orders";
 import { Home } from "./pages/Home";
+import { Items } from "./pages/Items";
 
 function App() {
   const [people, setPeople] = useState([]);
@@ -64,6 +65,7 @@ function App() {
               />
             }
           />
+          <Route exact path="/items" element={<Items items={items} />} />
           <Route exact path="/persondetails/:id" element={<PersonDetails />} />
         </Routes>
       </Router>

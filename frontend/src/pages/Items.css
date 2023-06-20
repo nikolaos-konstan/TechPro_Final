@@ -1,0 +1,53 @@
+body {
+  background-color: var(--theme);
+}
+
+.color-box {
+  margin: 10px;
+  width: 100px;
+  height: 120px;
+  border-radius: 15px 15px 5px 5px;
+  background-color: #f0f0f0;
+  overflow: hidden;
+}
+
+.top {
+  height: 75%;
+  background-color: #dddddd;
+}
+
+.bottom {
+  height: 25%;
+  background-color: #aaaaaa;
+}
+
+/*Add-button*/
+.add-button {
+  width: 50px;
+  height: 50px;
+  border: none;
+  background-color: #f0f0f0;
+  position: relative;
+  cursor: pointer;
+}
+
+.add-button:before,
+.add-button:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 70%;
+  height: 4px;
+  background-color: #333333;
+  transform: translate(-50%, -50%);
+}
+
+.add-button:before {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.add-button:hover:before,
+.add-button:hover:after {
+  background-color: #666666;
+}
