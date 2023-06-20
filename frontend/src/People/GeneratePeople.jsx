@@ -1,8 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-export const GeneratePeople = () => {
+export const GeneratePeople = ({ loadPeople }) => {
   const [data, setData] = useState([]);
+  const [counter, setCounter] = useState(0);
 
   useEffect(() => {
     fetchData();
@@ -21,7 +22,11 @@ export const GeneratePeople = () => {
 
   const generate = async (e) => {
     e.preventDefault();
-    await axios.post("http://localhost:8080/people", data);
+    await axios.post("http://localhost:8080/people", data[counter]);
+    counter === data.length - 1
+      ? setCounter((prev) => 0)
+      : setCounter((prev) => prev + 1);
+    loadPeople();
   };
   //const generate = () => console.log(data);
   return (

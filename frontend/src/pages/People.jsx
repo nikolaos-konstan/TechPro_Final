@@ -8,7 +8,7 @@ export const People = ({ people, loadPeople }) => {
     <div className="container">
       <PeopleTable people={people} loadPeople={loadPeople} />
       <AddPerson loadPeople={loadPeople} />
-      <GeneratePeople />
+      <GeneratePeople loadPeople={loadPeople} />
     </div>
   );
 };
