@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./AddPerson.css";
+import "../pages/People.css";
 import axios from "axios";
 
 export const AddPerson = ({ loadPeople }) => {
@@ -34,7 +34,7 @@ export const AddPerson = ({ loadPeople }) => {
     });
   };
   return (
-    <div>
+    <div className="grid-item-2">
       <form onSubmit={(e) => onSubmitData(e)}>
         <h2>Add Person</h2>
         <div className="form-group">

@@ -1,5 +1,5 @@
 import axios from "axios";
-import "./PeopleTable.css";
+import "../pages/People.css";
 import { Link } from "react-router-dom";
 
 export const PeopleTable = ({ people, loadPeople }) => {
@@ -8,7 +8,7 @@ export const PeopleTable = ({ people, loadPeople }) => {
     loadPeople();
   };
   return (
-    <div>
+    <div className="grid-item-1">
       <table>
         <thead>
           <tr>
