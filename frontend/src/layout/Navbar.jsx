@@ -7,15 +7,15 @@ export const Navbar = () => {
       <nav>
         <ul className="navbar">
           <li className="section">
-            <a href="/">Home</a>
+            <Link to="/">Home</Link>
           </li>
           <li className="section">
             <Link to="/people">People</Link>
-            <a href="/allorders">All Orders</a>
-            <a href="/items">All Items</a>
+            <Link to="/allorders">All Orders</Link>
+            <Link to="/items">All Items</Link>
           </li>
           <li className="section">
-            <a href="/about">About</a>
+            <Link to="/about">About</Link>
           </li>
         </ul>
       </nav>
