@@ -6,14 +6,17 @@ import { PersonDetails } from "./pages/PersonDetails";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Orders } from "./pages/Orders";
+import { Home } from "./pages/Home";
 
 function App() {
   const [people, setPeople] = useState([]);
   const [orders, setOrders] = useState([]);
+  const [items, setItems] = useState([]);
 
   useEffect(() => {
     loadPeople();
     loadOrders();
+    loadItems();
   }, []);
   const loadPeople = async () => {
     const result = await axios.get("http://localhost:8080/people/");
@@ -23,12 +26,21 @@ function App() {
     const result = await axios.get("http://localhost:8080/orders/");
     setOrders(result.data);
   };
+  const loadItems = async () => {
+    const result = await axios.get("http://localhost:8080/items/");
+    setItems(result.data);
+  };
 
   return (
     <div className="App">
       <Router>
         <Navbar />
         <Routes>
+          <Route
+            exact
+            path="/home"
+            element={<Home people={people} orders={orders} items={items} />}
+          />
           <Route
             exact
             path="/people"

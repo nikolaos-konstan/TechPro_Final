@@ -4,7 +4,7 @@ import { OrderDetailsTable } from "../Orders/OrderDetailsTable";
 
 export const Orders = ({ orders }) => {
   return (
-    <div className="container">
+    <div className="container-orderspage">
       <OrdersTable orders={orders} />
       <OrderDetailsTable />
     </div>

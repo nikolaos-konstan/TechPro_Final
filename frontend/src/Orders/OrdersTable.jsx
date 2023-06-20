@@ -6,12 +6,11 @@ export const OrdersTable = ({ orders }) => {
       <table>
         <thead>
           <tr>
-            <th>Number</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Email</th>
+            <th>Order Number</th>
+            <th>Contact</th>
+
+            <th>Date</th>
             <th>Actions</th>
-            <th>Orders</th>
           </tr>
         </thead>
         <tbody>
