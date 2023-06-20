@@ -9,13 +9,19 @@ import { Orders } from "./pages/Orders";
 
 function App() {
   const [people, setPeople] = useState([]);
+  const [orders, setOrders] = useState([]);
 
   useEffect(() => {
     loadPeople();
+    loadOrders();
   }, []);
   const loadPeople = async () => {
     const result = await axios.get("http://localhost:8080/people/");
     setPeople(result.data);
+  };
+  const loadOrders = async () => {
+    const result = await axios.get("http://localhost:8080/orders/");
+    setOrders(result.data);
   };
 
   return (
@@ -31,7 +37,7 @@ function App() {
           <Route
             exact
             path="/allorders"
-            element={<Orders people={people} loadPeople={loadPeople} />}
+            element={<Orders orders={orders} loadOrders={loadOrders} />}
           />
           <Route exact path="/persondetails/:id" element={<PersonDetails />} />
         </Routes>
