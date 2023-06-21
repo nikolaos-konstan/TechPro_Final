@@ -53,21 +53,13 @@ export const OrdersTable = ({
     return result;
   }, {});
 
-  console.log(transformedData);
+  //console.log(transformedData.array_orderId3);
 
   //End of Test
   //Delete method for OrderDetails **********Needs to find a way to refresh**********
   const deleteOrderDetails = async (id) => {
     await axios.delete(`http://localhost:8080/orderdetails/${id}`);
   };
-
-  // Delete DetailOrders first in order to delete Order//
-  // const deleteOrder = async (id) => {
-  //   await axios
-  //     .delete(`http://localhost:8080/orderdetails/${id}`)
-  //     .then(() => axios.delete(`http://localhost:8080/order/${id}`));
-  //   loadOrders();
-  // };
 
   return (
     <div className="container-orderspage">

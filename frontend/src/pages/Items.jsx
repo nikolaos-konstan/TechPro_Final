@@ -38,6 +38,7 @@ export const Items = ({ items, loadItems }) => {
   };
 
   // Delete DetailOrders first in order to delete item//
+  // Not needed anymore, applied cascade all from the init
   // const deleteItem = async (id) => {
   //   await axios
   //     .delete(`http://localhost:8080/orderdetails/8`)
