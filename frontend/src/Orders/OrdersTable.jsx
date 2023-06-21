@@ -31,12 +31,12 @@ export const OrdersTable = ({
   };
 
   // Delete DetailOrders first in order to delete Order//
-  const deleteOrder = async (id) => {
-    await axios
-      .delete(`http://localhost:8080/orderdetails/${id}`)
-      .then(() => axios.delete(`http://localhost:8080/order/${id}`));
-    loadOrders();
-  };
+  // const deleteOrder = async (id) => {
+  //   await axios
+  //     .delete(`http://localhost:8080/orderdetails/${id}`)
+  //     .then(() => axios.delete(`http://localhost:8080/order/${id}`));
+  //   loadOrders();
+  // };
 
   return (
     <div className="container-orderspage">
@@ -64,7 +64,7 @@ export const OrdersTable = ({
                 </td>
                 <td>{order.orderDate}</td>
                 <td>
-                  <button onClick={deleteOrder}>Delete</button>
+                  <button>Delete</button>
                   <button
                     onClick={() =>
                       filterByOrderId(restructuredArray, order.orderId)
