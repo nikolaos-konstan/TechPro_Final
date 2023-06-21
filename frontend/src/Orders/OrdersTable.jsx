@@ -2,8 +2,8 @@ import "../pages/Orders.css";
 import { OrderDetailsTable } from "./OrderDetailsTable";
 
 export const OrdersTable = ({ orders, orderDetails }) => {
+  //Function to reconstruct OrderDetails array
   const restructuredArray = orderDetails.map((obj) => {
-    // Restructure each object individually
     return {
       personId: obj.order.people.personId,
       orderId: obj.order.orderId,
@@ -13,9 +13,12 @@ export const OrdersTable = ({ orders, orderDetails }) => {
     };
   });
 
-  const print = () => {
-    console.log(restructuredArray);
+  const filterByOrderId = (arr, orderId) => {
+    console.log(arr);
+    const filteredArray = arr.filter((obj) => obj.orderId === orderId);
+    console.log(filteredArray);
   };
+
   return (
     <div className="container-orderspage">
       <div className="grid-item-ordersTable">
@@ -43,7 +46,13 @@ export const OrdersTable = ({ orders, orderDetails }) => {
                 <td>{order.orderDate}</td>
                 <td>
                   <button>Delete</button>
-                  <button onClick={print}>View Details</button>
+                  <button
+                    onClick={() =>
+                      filterByOrderId(restructuredArray, order.orderId)
+                    }
+                  >
+                    View Details
+                  </button>
                 </td>
               </tr>
             ))}
