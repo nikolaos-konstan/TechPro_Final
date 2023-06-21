@@ -61,32 +61,37 @@ export const OrdersTable = ({ orders, orderDetails }) => {
         </table>
       </div>
       <div className="grid-item-orderDetails">
-        {5 > 2 ? <h1>Yes</h1> : <h1>NO</h1>}
-        <div>
-          <table>
-            <thead>
-              <tr>
-                <th>Order Number</th>
-                <th>Item</th>
-
-                <th>Quantity</th>
-                <th>Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {filteredArray.map((orderDetails) => (
+        {filteredArray.length > 0 ? (
+          <div>
+            <table>
+              <thead>
                 <tr>
-                  <td>{orderDetails.orderDetailsId}</td>
-                  <td>{orderDetails.itemName}</td>
-                  <td>{orderDetails.quantity}</td>
-                  <td>
-                    <button>Delete</button>
-                  </td>
+                  <th>Order Number</th>
+                  <th>Item</th>
+
+                  <th>Quantity</th>
+                  <th>Actions</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+              </thead>
+              <tbody>
+                {filteredArray.map((orderDetails) => (
+                  <tr>
+                    <td>{orderDetails.orderDetailsId}</td>
+                    <td>{orderDetails.itemName}</td>
+                    <td>{orderDetails.quantity}</td>
+                    <td>
+                      <button>Delete</button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        ) : (
+          <div className="grid-item-orderDetails">
+            <h1>No Order Details associated with this order</h1>
+          </div>
+        )}
         {/* <OrderDetailsTable orderDetails={orderDetails} /> */}
       </div>
     </div>
