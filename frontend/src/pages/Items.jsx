@@ -37,6 +37,14 @@ export const Items = ({ items, loadItems }) => {
     loadItems();
   };
 
+  // Delete DetailOrders first in order to delete item//
+  // const deleteItem = async (id) => {
+  //   await axios
+  //     .delete(`http://localhost:8080/orderdetails/8`)
+  //     .then(() => axios.delete(`http://localhost:8080/items/${id}`));
+  //   loadItems();
+  // };
+
   return (
     <div>
       <h1>Items</h1>
