@@ -25,6 +25,37 @@ export const OrdersTable = ({
     setFilteredArray(arr.filter((obj) => obj.orderId === orderId));
   };
 
+  //Test
+  /*
+  the output of the transformedData is in this format
+  {
+  array_orderId1: [2, 3],
+  array_orderId2: [4, 5]
+}
+
+  */
+  const orderAndDetailsArray = orderDetails.map((obj) => {
+    return {
+      orderId: obj.order.orderId,
+      orderDetailsId: obj.orderDetailsId,
+    };
+  });
+
+  const transformedData = orderAndDetailsArray.reduce((result, obj) => {
+    const { orderId, orderDetailsId } = obj;
+
+    if (!result[`array_orderId${orderId}`]) {
+      result[`array_orderId${orderId}`] = [orderDetailsId];
+    } else {
+      result[`array_orderId${orderId}`].push(orderDetailsId);
+    }
+
+    return result;
+  }, {});
+
+  console.log(transformedData);
+
+  //End of Test
   //Delete method for OrderDetails **********Needs to find a way to refresh**********
   const deleteOrderDetails = async (id) => {
     await axios.delete(`http://localhost:8080/orderdetails/${id}`);
