@@ -1,5 +1,5 @@
-CREATE DATABASE `final_project`;
-USE final_project;
+CREATE DATABASE `final_project_test`;
+USE final_project_test;
 
 DROP TABLE IF EXISTS `people`;
 CREATE TABLE people (
@@ -20,7 +20,7 @@ CREATE TABLE orders (
   `OrderID` INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `PersonID` INT UNSIGNED NOT NULL,
   `OrderDate` DATETIME NOT NULL,
-  FOREIGN KEY (PersonID) REFERENCES people (PersonID)
+  FOREIGN KEY (PersonID) REFERENCES people (PersonID) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 DROP TABLE IF EXISTS `order_details`;
@@ -29,7 +29,7 @@ CREATE TABLE order_details (
   `OrderID` INT UNSIGNED NOT NULL,
   `ItemID` INT UNSIGNED NOT NULL,
   `Quantity` INT,
-  FOREIGN KEY (OrderID) REFERENCES orders (OrderID),
-  FOREIGN KEY (ItemID) REFERENCES items (ItemID)
+  FOREIGN KEY (OrderID) REFERENCES orders (OrderID) ON DELETE CASCADE,
+  FOREIGN KEY (ItemID) REFERENCES items (ItemID) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
