@@ -72,7 +72,11 @@ function App() {
             element={<Items items={items} loadItems={loadItems} />}
           />
           <Route exact path="/about" element={<About />} />
-          <Route exact path="/persondetails/:id" element={<PersonDetails />} />
+          <Route
+            exact
+            path="/persondetails/:id"
+            element={<PersonDetails loadPeople={loadPeople} />}
+          />
         </Routes>
       </Router>
     </div>

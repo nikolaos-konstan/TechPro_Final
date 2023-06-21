@@ -1,7 +1,7 @@
 import axios from "axios";
 import "./Modal.css";
 import { useEffect, useState } from "react";
-const EditUser = ({ openEdit, setOpenEdit, id }) => {
+const EditUser = ({ openEdit, setOpenEdit, id, loadPerson }) => {
   const [person, setPerson] = useState({
     firstName: "",
     lastName: "",
@@ -15,17 +15,18 @@ const EditUser = ({ openEdit, setOpenEdit, id }) => {
   };
 
   useEffect(() => {
-    loadPerson();
+    loadPersonEdit(id);
   }, []);
 
-  //Need to find a way to refresh the new content, loadPerson() is not working
+  //Need to find a way to refresh the new content, loadPerson() is loaded from Parent
   const onSubmitData = async (e) => {
     e.preventDefault();
     await axios.put(`http://localhost:8080/people/${id}`, person);
-    //loadPerson();
+    loadPerson(id);
+    setOpenEdit(false);
   };
 
-  const loadPerson = async () => {
+  const loadPersonEdit = async () => {
     const result = await axios.get(`http://localhost:8080/people/${id}`);
     setPerson(result.data);
   };

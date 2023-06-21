@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import "./PersonDetails.css";
 import EditUser from "../People/EditUser";
 
-export const PersonDetails = () => {
+export const PersonDetails = (loadPeople) => {
   const [person, setPerson] = useState({
     firstName: "",
     lastName: "",
@@ -57,7 +57,12 @@ export const PersonDetails = () => {
       </div>
 
       {openEdit && (
-        <EditUser openEdit={openEdit} setOpenEdit={setOpenEdit} id={id} />
+        <EditUser
+          openEdit={openEdit}
+          setOpenEdit={setOpenEdit}
+          id={id}
+          loadPerson={loadPerson}
+        />
       )}
     </div>
   );
