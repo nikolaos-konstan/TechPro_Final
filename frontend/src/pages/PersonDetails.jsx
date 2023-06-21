@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import "./PersonDetails.css";
+import EditUser from "../People/EditUser";
 
 export const PersonDetails = () => {
   const [person, setPerson] = useState({
@@ -10,6 +11,8 @@ export const PersonDetails = () => {
     lastName: "",
     email: "",
   });
+
+  const [openEdit, setOpenEdit] = useState(false);
 
   const { firstName, lastName, email } = person;
   const { id } = useParams();
@@ -41,10 +44,21 @@ export const PersonDetails = () => {
             <span className="field-value">{email}</span>
           </div>
         </div>
-        <div class="card-actions">
-          <button class="edit-button">Edit</button>
+        <div className="card-actions">
+          <button
+            className="edit-button"
+            onClick={() => {
+              setOpenEdit(true);
+            }}
+          >
+            Edit
+          </button>
         </div>
       </div>
+
+      {openEdit && (
+        <EditUser openEdit={openEdit} setOpenEdit={setOpenEdit} id={id} />
+      )}
     </div>
   );
 };
