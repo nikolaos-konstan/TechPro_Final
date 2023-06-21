@@ -53,7 +53,7 @@ export const Items = ({ items, loadItems }) => {
       </button>
       <div className="box-container">
         {items.map((name) => (
-          <div>
+          <div key={name.itemId}>
             <ColorBox name={name.itemName} />
             <button onClick={() => deleteItem(name.itemId)}>Delete</button>
           </div>

@@ -22,8 +22,8 @@ export const PeopleTable = ({ people, loadPeople }) => {
         </thead>
         <tbody>
           {people.map((person, index) => (
-            <tr>
-              <td key={person.personId}>{index + 1}</td>
+            <tr key={person.personId}>
+              <td>{index + 1}</td>
               <td>{person.firstName}</td>
               <td>{person.lastName}</td>
               <td>{person.email}</td>

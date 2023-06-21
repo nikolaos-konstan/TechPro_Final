@@ -1,3 +1,5 @@
+/// NOT IN USE RIGHT NOW, DELETE LATER??
+
 import "../pages/Orders.css";
 
 export const OrderDetailsTable = ({ orderDetails }) => {

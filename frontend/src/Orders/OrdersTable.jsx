@@ -1,8 +1,13 @@
 import { useState } from "react";
 import "../pages/Orders.css";
-import { OrderDetailsTable } from "./OrderDetailsTable";
+import axios from "axios";
 
-export const OrdersTable = ({ orders, orderDetails }) => {
+export const OrdersTable = ({
+  orders,
+  orderDetails,
+  loadOrderDetails,
+  loadOrders,
+}) => {
   const [filteredArray, setFilteredArray] = useState([]);
   //Function to reconstruct OrderDetails array
   const restructuredArray = orderDetails.map((obj) => {
@@ -20,6 +25,19 @@ export const OrdersTable = ({ orders, orderDetails }) => {
     setFilteredArray(arr.filter((obj) => obj.orderId === orderId));
   };
 
+  //Delete method for OrderDetails **********Needs to find a way to refresh**********
+  const deleteOrderDetails = async (id) => {
+    await axios.delete(`http://localhost:8080/orderdetails/${id}`);
+  };
+
+  // Delete DetailOrders first in order to delete Order//
+  const deleteOrder = async (id) => {
+    await axios
+      .delete(`http://localhost:8080/orderdetails/${id}`)
+      .then(() => axios.delete(`http://localhost:8080/order/${id}`));
+    loadOrders();
+  };
+
   return (
     <div className="container-orderspage">
       <div className="grid-item-ordersTable">
@@ -35,7 +53,7 @@ export const OrdersTable = ({ orders, orderDetails }) => {
           </thead>
           <tbody>
             {orders.map((order, index) => (
-              <tr>
+              <tr key={order.orderId}>
                 <td>{order.orderId}</td>
                 <td>
                   {order.people.firstName +
@@ -46,7 +64,7 @@ export const OrdersTable = ({ orders, orderDetails }) => {
                 </td>
                 <td>{order.orderDate}</td>
                 <td>
-                  <button>Delete</button>
+                  <button onClick={deleteOrder}>Delete</button>
                   <button
                     onClick={() =>
                       filterByOrderId(restructuredArray, order.orderId)
@@ -75,12 +93,19 @@ export const OrdersTable = ({ orders, orderDetails }) => {
               </thead>
               <tbody>
                 {filteredArray.map((orderDetails) => (
-                  <tr>
+                  <tr key={orderDetails.orderDetailsId}>
                     <td>{orderDetails.orderDetailsId}</td>
                     <td>{orderDetails.itemName}</td>
                     <td>{orderDetails.quantity}</td>
                     <td>
-                      <button>Delete</button>
+                      <button>Edit</button>
+                      <button
+                        onClick={() =>
+                          deleteOrderDetails(orderDetails.orderDetailsId)
+                        }
+                      >
+                        Delete
+                      </button>
                     </td>
                   </tr>
                 ))}
