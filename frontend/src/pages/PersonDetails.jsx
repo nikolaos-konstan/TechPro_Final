@@ -6,7 +6,8 @@ import "./PersonDetails.css";
 import EditUser from "../People/EditUser";
 
 export const PersonDetails = ({ loadPeople, orderDetails, orders }) => {
-  const [filteredArray, setFilteredArray] = useState([]);
+  const [filteredDetailsArray, setFilteredDetailsArray] = useState([]);
+  const [filteredOrdersArray, setFilteredOrdersArray] = useState([]);
   const [person, setPerson] = useState({
     firstName: "",
     lastName: "",
@@ -14,7 +15,8 @@ export const PersonDetails = ({ loadPeople, orderDetails, orders }) => {
   });
 
   //Table Content start
-  const restructuredArray = orderDetails.map((obj) => {
+  //Reconstruct Arrays for ease of use
+  const restructureDetailsdArray = orderDetails.map((obj) => {
     return {
       personId: obj.order.people.personId,
       orderId: obj.order.orderId,
@@ -22,6 +24,13 @@ export const PersonDetails = ({ loadPeople, orderDetails, orders }) => {
       itemId: obj.item.itemId,
       itemName: obj.item.itemName,
       quantity: obj.quantity,
+    };
+  });
+  const restructureOrdersdArray = orders.map((obj) => {
+    return {
+      personId: obj.people.personId,
+      orderId: obj.orderId,
+      orderDate: obj.orderDate,
     };
   });
   // Table content End
@@ -33,7 +42,6 @@ export const PersonDetails = ({ loadPeople, orderDetails, orders }) => {
 
   useEffect(() => {
     loadPerson(id);
-    filterByPersonId(restructuredArray, id);
   }, []);
 
   const loadPerson = async (id) => {
@@ -42,20 +50,26 @@ export const PersonDetails = ({ loadPeople, orderDetails, orders }) => {
   };
 
   // Start of functions and data for tables
-  //Function to reconstruct OrderDetails array
-  //const tryThis = (num) => {};
-  //const filteredArray = restructuredArray.filter((obj) => obj.personId === id);
   // id from useParam is a string, needs to be transformed in to a number
-  const filterByPersonId = (arr, personid) => {
-    setFilteredArray(arr.filter((obj) => obj.personId === Number(personid)));
+  // const filterOrderDetailsByPersonId = (arr, personid) => {
+  //   setFilteredDetailsArray(
+  //     arr.filter((obj) => obj.personId === Number(personid))
+  //   );
+  // };
+  const filterOrderDetailsByOrderId = (arr, orderid) => {
+    setFilteredDetailsArray(
+      arr.filter((obj) => obj.orderId === Number(orderid))
+    );
   };
-
-  console.log(restructuredArray);
-  console.log(filteredArray);
+  const filterOrdersByPersonId = (arr, personid) => {
+    setFilteredOrdersArray(
+      arr.filter((obj) => obj.personId === Number(personid))
+    );
+  };
   // end of functions and data for tables
 
   return (
-    <div>
+    <div className="pd-container">
       <div className="card">
         <h2 className="card-title">User Information</h2>
         <div className="card-content">
@@ -81,29 +95,73 @@ export const PersonDetails = ({ loadPeople, orderDetails, orders }) => {
           >
             Edit
           </button>
-          <button>Click me</button>
+          {/* <button
+          // onClick={() =>
+          //   filterOrderDetailsByPersonId(restructureDetailsdArray, id)
+          // }
+          >
+            Show Details
+          </button> */}
+          <button
+            onClick={() => filterOrdersByPersonId(restructureOrdersdArray, id)}
+          >
+            Show Details
+          </button>
         </div>
       </div>
-      <div className="grid-item-ordersTable">
+      <div className="grid-item-pd-ordersTable">
         <table>
           <thead>
             <tr>
               <th>Order Number</th>
-              <th>Contact</th>
 
               <th>Date</th>
               <th>Actions</th>
             </tr>
           </thead>
           <tbody>
-            {filteredArray.map((order) => (
-              <tr key={order.orderId}>
+            {filteredOrdersArray.map((order, index) => (
+              <tr key={index}>
                 <td>{order.orderId}</td>
-                <td>{order.orderId}</td>
-                <td>{order.orderId}</td>
+                <td>{order.orderDate}</td>
+
                 <td>
                   <button>Delete</button>
-                  <button>View Details</button>
+                  <button
+                    onClick={() =>
+                      filterOrderDetailsByOrderId(
+                        restructureDetailsdArray,
+                        order.orderId
+                      )
+                    }
+                  >
+                    View Details
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <div className="grid-item-pd-orderDetailsTable">
+        <table>
+          <thead>
+            <tr>
+              <th>Order Details Number</th>
+              <th>Item</th>
+              <th>Quantity</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {filteredDetailsArray.map((order, index) => (
+              <tr key={index}>
+                <td>{order.orderId}</td>
+                <td>{order.itemName}</td>
+                <td>{order.quantity}</td>
+                <td>
+                  <button>Delete</button>
+                  <button>Edit</button>
                 </td>
               </tr>
             ))}
