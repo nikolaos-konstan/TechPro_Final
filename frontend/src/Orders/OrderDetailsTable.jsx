@@ -3,7 +3,7 @@ import "../pages/Orders.css";
 export const OrderDetailsTable = ({ orderDetails }) => {
   return (
     <div>
-      <div className="grid-item-orderdetails">
+      <div>
         <table>
           <thead>
             <tr>

@@ -4,9 +4,8 @@ import { OrderDetailsTable } from "../Orders/OrderDetailsTable";
 
 export const Orders = ({ orders, orderDetails }) => {
   return (
-    <div className="container-orderspage">
+    <div>
       <OrdersTable orders={orders} orderDetails={orderDetails} />
-      <OrderDetailsTable orderDetails={orderDetails} />
     </div>
   );
 };

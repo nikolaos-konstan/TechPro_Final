@@ -2,16 +2,14 @@
   background-color: var(--theme);
   display: grid;
   grid-template-columns: 2fr 1fr;
-  grid-template-rows: 400px 200px 200px;
-
-  gap: 20px;
+  grid-template-rows: 800px;
 }
 
-.grid-item-orders {
-  grid-column: 1;
+.grid-item-ordersTable {
+  grid-column: 1/2;
   grid-row: 1/-1;
 }
 .grid-item-orderDetails {
-  grid-column: 1;
-  grid-row: 1/-1;
+  grid-column: 2;
+  grid-row: 1;
 }
