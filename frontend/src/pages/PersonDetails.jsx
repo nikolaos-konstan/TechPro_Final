@@ -156,7 +156,7 @@ export const PersonDetails = ({ loadPeople, orderDetails, orders }) => {
           <tbody>
             {filteredDetailsArray.map((order, index) => (
               <tr key={index}>
-                <td>{order.orderId}</td>
+                <td>{order.orderDetailsId}</td>
                 <td>{order.itemName}</td>
                 <td>{order.quantity}</td>
                 <td>
