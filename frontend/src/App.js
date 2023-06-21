@@ -75,7 +75,15 @@ function App() {
           <Route
             exact
             path="/persondetails/:id"
-            element={<PersonDetails loadPeople={loadPeople} />}
+            element={
+              <PersonDetails
+                loadPeople={loadPeople}
+                orders={orders}
+                loadOrders={loadOrders}
+                orderDetails={orderDetails}
+                loadOrderDetails={loadOrderDetails}
+              />
+            }
           />
         </Routes>
       </Router>
