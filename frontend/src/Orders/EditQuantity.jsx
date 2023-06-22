@@ -5,6 +5,8 @@ export const EditQuantity = ({
   orderDetails,
   filteredArray,
   deleteOrderDetails,
+  loadOrderDetails,
+  setFilteredArray,
 }) => {
   const [isEdit, setIsEdit] = useState(false);
   const [counter, setCounter] = useState(0);
@@ -17,10 +19,13 @@ export const EditQuantity = ({
     setCounter((prev) => prev - 1);
   };
 
-  const editQuantity = async (id) => {
+  ///Need to find a way to update the quantity change in OrderDetails
+  const editQuantity = async (arr, id) => {
     await axios.put(`http://localhost:8080/orderdetails/${id}`, {
       quantity: counter,
     });
+    loadOrderDetails();
+    //setFilteredArray(arr.filter((obj) => obj.orderDetailsId !== id));
     setIsEdit((prev) => !prev);
   };
 
@@ -33,7 +38,9 @@ export const EditQuantity = ({
           <div>
             <button
               disabled={counter === 0}
-              onClick={() => editQuantity(orderDetails.orderDetailsId)}
+              onClick={() =>
+                editQuantity(filteredArray, orderDetails.orderDetailsId)
+              }
             >
               Save Changes
             </button>

@@ -76,6 +76,8 @@ export const OrdersTable = ({
             orderDetails={orderDetails}
             filteredArray={filteredArray}
             deleteOrderDetails={deleteOrderDetails}
+            loadOrderDetails={loadOrderDetails}
+            setFilteredArray={setFilteredArray}
           />
         ) : (
           <div className="grid-item-orderDetails">

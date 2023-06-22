@@ -5,6 +5,8 @@ export const OrderDetailsTable = ({
   orderDetails,
   deleteOrderDetails,
   filteredArray,
+  loadOrderDetails,
+  setFilteredArray,
 }) => {
   //State to be able to edit quantity of items in orderDetails
 
@@ -29,6 +31,8 @@ export const OrderDetailsTable = ({
                 orderDetails={orderDetails}
                 filteredArray={filteredArray}
                 deleteOrderDetails={deleteOrderDetails}
+                loadOrderDetails={loadOrderDetails}
+                setFilteredArray={setFilteredArray}
               />
             </tr>
           ))}
