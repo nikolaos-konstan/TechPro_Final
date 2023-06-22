@@ -56,3 +56,23 @@ body {
 .add-button:hover:after {
   background-color: #666666;
 }
+
+/* input box */
+.container-color-input {
+  display: flex;
+  align-items: center;
+}
+
+.text-element-color-input {
+  margin-right: 10px;
+}
+
+.input-field-color-input {
+  width: 120px;
+  padding: 5px;
+}
+
+.add-button-color-input {
+  margin-left: 10px;
+  width: 150px;
+}
