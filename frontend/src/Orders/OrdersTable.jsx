@@ -61,6 +61,12 @@ export const OrdersTable = ({
     await axios.delete(`http://localhost:8080/orderdetails/${id}`);
   };
 
+  //Delete method for Orders
+  const deleteOrder = async (id) => {
+    await axios.delete(`http://localhost:8080/orders/${id}`);
+    loadOrders();
+  };
+
   return (
     <div className="container-orderspage">
       <div className="grid-item-ordersTable">
@@ -87,7 +93,9 @@ export const OrdersTable = ({
                 </td>
                 <td>{order.orderDate}</td>
                 <td>
-                  <button>Delete</button>
+                  <button onClick={() => deleteOrder(order.orderId)}>
+                    Delete
+                  </button>
                   <button
                     onClick={() =>
                       filterByOrderId(restructuredArray, order.orderId)
