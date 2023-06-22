@@ -51,3 +51,9 @@
 a {
   text-decoration: none;
 }
+
+*:disabled {
+  background-color: rgb(107, 59, 31);
+  color: linen;
+  opacity: 1;
+}

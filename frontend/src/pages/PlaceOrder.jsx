@@ -24,17 +24,11 @@ export const PlaceOrder = ({ items, orders, loadOrders }) => {
     await axios.post("http://localhost:8080/orders", order);
     loadOrders();
   };
-  //Insert this in every add button, only necessary the first time
-  const addProduct = () => {
-    setLastOrderId(orders.at(-1).orderId);
-    openModal();
-  };
 
-  const openModal = () => {
+  const addProduct = () => {
     console.log(lastOrderId);
   };
-  //
-  //console.log(orders.at[-1]);
+
   return (
     <div>
       <div>
@@ -44,7 +38,11 @@ export const PlaceOrder = ({ items, orders, loadOrders }) => {
           {items.map((name) => (
             <div key={name.itemId}>
               <ColorBox name={name.itemName} />
-              <OrderButtons addProduct={addProduct} />
+              <OrderButtons
+                setLastOrderId={setLastOrderId}
+                addProduct={addProduct}
+                orders={orders}
+              />
             </div>
           ))}
         </div>

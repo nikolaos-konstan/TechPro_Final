@@ -1,11 +1,13 @@
 import { useState } from "react";
 import "./OrderButtons.css";
 
-export const OrderButtons = ({ addProduct }) => {
+export const OrderButtons = ({ addProduct, orders, setLastOrderId }) => {
   //Counter
   const [counter, setCounter] = useState(0);
   const increaseCount = () => {
     setCounter((prev) => prev + 1);
+    //Insert this in every add button, only necessary the first time in order to setLastOrderId
+    setLastOrderId(orders.at(-1).orderId);
   };
 
   const decreaseCount = () => {
@@ -14,7 +16,9 @@ export const OrderButtons = ({ addProduct }) => {
   //End of Counter
   return (
     <div>
-      <button onClick={addProduct}>Add to Order</button>
+      <button onClick={addProduct} disabled={counter === 0}>
+        Add to Order
+      </button>
       <div>
         <div className="counter-container">
           <button
