@@ -9,17 +9,6 @@ export const OrdersTable = ({
   loadOrders,
 }) => {
   const [filteredArray, setFilteredArray] = useState([]);
-  //Function to reconstruct OrderDetails array (delete later)
-  // const restructuredArray = orderDetails.map((obj) => {
-  //   return {
-  //     personId: obj.order.people.personId,
-  //     orderId: obj.order.orderId,
-  //     orderDetailsId: obj.orderDetailsId,
-  //     itemId: obj.item.itemId,
-  //     itemName: obj.item.itemName,
-  //     quantity: obj.quantity,
-  //   };
-  // });
 
   //Filters the Order Details and keeps only the ones that belong to each Order
   const filterByOrderId = (arr, orderId) => {
