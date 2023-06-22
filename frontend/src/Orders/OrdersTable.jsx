@@ -2,6 +2,8 @@ import { useState } from "react";
 import "../pages/Orders.css";
 import axios from "axios";
 
+import { OrderDetailsTable } from "./OrderDetailsTable";
+
 export const OrdersTable = ({
   orders,
   orderDetails,
@@ -70,41 +72,11 @@ export const OrdersTable = ({
       </div>
       <div className="grid-item-orderDetails">
         {filteredArray.length > 0 ? (
-          <div>
-            <table>
-              <thead>
-                <tr>
-                  <th>Order Number</th>
-                  <th>Item</th>
-
-                  <th>Quantity</th>
-                  <th>Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                {filteredArray.map((orderDetails) => (
-                  <tr key={orderDetails.orderDetailsId}>
-                    <td>{orderDetails.orderDetailsId}</td>
-                    <td>{orderDetails.itemName}</td>
-                    <td>{orderDetails.quantity}</td>
-                    <td>
-                      <button>Edit</button>
-                      <button
-                        onClick={() =>
-                          deleteOrderDetails(
-                            filteredArray,
-                            orderDetails.orderDetailsId
-                          )
-                        }
-                      >
-                        Delete
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+          <OrderDetailsTable
+            orderDetails={orderDetails}
+            filteredArray={filteredArray}
+            deleteOrderDetails={deleteOrderDetails}
+          />
         ) : (
           <div className="grid-item-orderDetails">
             <h1>No Order Details associated with this order</h1>

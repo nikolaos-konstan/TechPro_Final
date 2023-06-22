@@ -1,35 +1,39 @@
-/// NOT IN USE RIGHT NOW, DELETE LATER??
-
 import "../pages/Orders.css";
+import { EditQuantity } from "./EditQuantity";
 
-export const OrderDetailsTable = ({ orderDetails }) => {
+export const OrderDetailsTable = ({
+  orderDetails,
+  deleteOrderDetails,
+  filteredArray,
+}) => {
+  //State to be able to edit quantity of items in orderDetails
+
   return (
     <div>
-      <div>
-        <table>
-          <thead>
-            <tr>
-              <th>Order Number</th>
-              <th>Item</th>
+      <table>
+        <thead>
+          <tr>
+            <th>Order Number</th>
+            <th>Item</th>
 
-              <th>Quantity</th>
-              <th>Actions</th>
+            <th>Quantity</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {filteredArray.map((orderDetails) => (
+            <tr key={orderDetails.orderDetailsId}>
+              <td>{orderDetails.orderDetailsId}</td>
+              <td>{orderDetails.item.itemName}</td>
+              <EditQuantity
+                orderDetails={orderDetails}
+                filteredArray={filteredArray}
+                deleteOrderDetails={deleteOrderDetails}
+              />
             </tr>
-          </thead>
-          <tbody>
-            {orderDetails.map((orderDetails, index) => (
-              <tr>
-                <td>{orderDetails.orderDetailsId}</td>
-                <td>{orderDetails.item.itemName}</td>
-                <td>{orderDetails.quantity}</td>
-                <td>
-                  <button>Delete</button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };
