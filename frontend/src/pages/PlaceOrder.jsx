@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { ColorBox } from "../Items/ColorBox";
 import "./PlaceOrder.css";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { OrderButtons } from "../Orders/OrderButtons";
 import { ConfirmCancelOrder } from "../Orders/ConfirmCancelOrder";
 
@@ -55,7 +55,9 @@ export const PlaceOrder = ({ items, orders, loadOrders, loadOrderDetails }) => {
         </div>
         <div className="place-order-grid-buttons">
           <button onClick={cancelOrder}>Cancel</button>
-          <button>Confirm</button>
+          <Link to="/">
+            <button>Confirm</button>
+          </Link>
         </div>
         {openEdit && (
           <ConfirmCancelOrder
