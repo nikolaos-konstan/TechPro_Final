@@ -4,6 +4,7 @@ import "./PlaceOrder.css";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { OrderButtons } from "../Orders/OrderButtons";
+import { ConfirmCancelOrder } from "../Orders/ConfirmCancelOrder";
 
 export const PlaceOrder = ({ items, orders, loadOrders, loadOrderDetails }) => {
   const [lastOrderId, setLastOrderId] = useState(0);
@@ -11,6 +12,8 @@ export const PlaceOrder = ({ items, orders, loadOrders, loadOrderDetails }) => {
   const effectRan = useRef(false);
   const { id } = useParams();
   const order = { people: { personId: Number(id) } };
+  //Open Modal Warning
+  const [openEdit, setOpenEdit] = useState(false);
 
   useEffect(() => {
     if (effectRan.current === false) {
@@ -23,6 +26,15 @@ export const PlaceOrder = ({ items, orders, loadOrders, loadOrderDetails }) => {
   const postOrder = async () => {
     await axios.post("http://localhost:8080/orders", order);
     loadOrders();
+  };
+
+  const cancelOrder = () => {
+    setLastOrderId(orders.at(-1).orderId);
+    openModal();
+  };
+
+  const openModal = () => {
+    setOpenEdit(true);
   };
 
   return (
@@ -46,9 +58,17 @@ export const PlaceOrder = ({ items, orders, loadOrders, loadOrderDetails }) => {
           ))}
         </div>
         <div className="place-order-grid-buttons">
-          <button>Cancel</button>
+          <button onClick={cancelOrder}>Cancel</button>
           <button>Confirm</button>
         </div>
+        {openEdit && (
+          <ConfirmCancelOrder
+            setOpenEdit={setOpenEdit}
+            lastOrderId={lastOrderId}
+            loadOrders={loadOrders}
+            id={id}
+          />
+        )}
       </div>
     </div>
   );
