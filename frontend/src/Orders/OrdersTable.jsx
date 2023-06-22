@@ -9,56 +9,28 @@ export const OrdersTable = ({
   loadOrders,
 }) => {
   const [filteredArray, setFilteredArray] = useState([]);
-  //Function to reconstruct OrderDetails array
-  const restructuredArray = orderDetails.map((obj) => {
-    return {
-      personId: obj.order.people.personId,
-      orderId: obj.order.orderId,
-      orderDetailsId: obj.orderDetailsId,
-      itemId: obj.item.itemId,
-      itemName: obj.item.itemName,
-      quantity: obj.quantity,
-    };
-  });
+  //Function to reconstruct OrderDetails array (delete later)
+  // const restructuredArray = orderDetails.map((obj) => {
+  //   return {
+  //     personId: obj.order.people.personId,
+  //     orderId: obj.order.orderId,
+  //     orderDetailsId: obj.orderDetailsId,
+  //     itemId: obj.item.itemId,
+  //     itemName: obj.item.itemName,
+  //     quantity: obj.quantity,
+  //   };
+  // });
 
+  //Filters the Order Details and keeps only the ones that belong to each Order
   const filterByOrderId = (arr, orderId) => {
-    setFilteredArray(arr.filter((obj) => obj.orderId === orderId));
+    setFilteredArray(arr.filter((obj) => obj.order.orderId === orderId));
   };
 
-  //Test
-  /*
-  the output of the transformedData is in this format
-  {
-  array_orderId1: [2, 3],
-  array_orderId2: [4, 5]
-}
-
-  */
-  const orderAndDetailsArray = orderDetails.map((obj) => {
-    return {
-      orderId: obj.order.orderId,
-      orderDetailsId: obj.orderDetailsId,
-    };
-  });
-
-  const transformedData = orderAndDetailsArray.reduce((result, obj) => {
-    const { orderId, orderDetailsId } = obj;
-
-    if (!result[`array_orderId${orderId}`]) {
-      result[`array_orderId${orderId}`] = [orderDetailsId];
-    } else {
-      result[`array_orderId${orderId}`].push(orderDetailsId);
-    }
-
-    return result;
-  }, {});
-
-  //console.log(transformedData.array_orderId3);
-
-  //End of Test
   //Delete method for OrderDetails **********Needs to find a way to refresh**********
-  const deleteOrderDetails = async (id) => {
+  const deleteOrderDetails = async (arr, id) => {
     await axios.delete(`http://localhost:8080/orderdetails/${id}`);
+    loadOrderDetails();
+    setFilteredArray(arr.filter((obj) => obj.orderDetailsId !== id));
   };
 
   //Delete method for Orders
@@ -97,9 +69,7 @@ export const OrdersTable = ({
                     Delete
                   </button>
                   <button
-                    onClick={() =>
-                      filterByOrderId(restructuredArray, order.orderId)
-                    }
+                    onClick={() => filterByOrderId(orderDetails, order.orderId)}
                   >
                     View Details
                   </button>
@@ -132,7 +102,10 @@ export const OrdersTable = ({
                       <button>Edit</button>
                       <button
                         onClick={() =>
-                          deleteOrderDetails(orderDetails.orderDetailsId)
+                          deleteOrderDetails(
+                            filteredArray,
+                            orderDetails.orderDetailsId
+                          )
                         }
                       >
                         Delete
