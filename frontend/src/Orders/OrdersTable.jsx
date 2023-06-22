@@ -17,7 +17,7 @@ export const OrdersTable = ({
     setFilteredArray(arr.filter((obj) => obj.order.orderId === orderId));
   };
 
-  //Delete method for OrderDetails **********Needs to find a way to refresh**********
+  //Delete method for OrderDetails
   const deleteOrderDetails = async (arr, id) => {
     await axios.delete(`http://localhost:8080/orderdetails/${id}`);
     loadOrderDetails();
