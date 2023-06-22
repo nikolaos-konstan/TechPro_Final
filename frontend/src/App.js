@@ -9,6 +9,7 @@ import { Orders } from "./pages/Orders";
 import { Home } from "./pages/Home";
 import { Items } from "./pages/Items";
 import { About } from "./pages/About";
+import { PlaceOrder } from "./pages/PlaceOrder";
 
 function App() {
   const [people, setPeople] = useState([]);
@@ -82,6 +83,21 @@ function App() {
                 loadOrders={loadOrders}
                 orderDetails={orderDetails}
                 loadOrderDetails={loadOrderDetails}
+              />
+            }
+          />
+          <Route
+            exact
+            path="/placeorder/:id"
+            element={
+              <PlaceOrder
+                loadPeople={loadPeople}
+                orders={orders}
+                loadOrders={loadOrders}
+                orderDetails={orderDetails}
+                loadOrderDetails={loadOrderDetails}
+                items={items}
+                loadItems={loadItems}
               />
             }
           />

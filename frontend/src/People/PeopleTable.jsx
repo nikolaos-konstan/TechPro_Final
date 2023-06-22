@@ -33,6 +33,11 @@ export const PeopleTable = ({ people, loadPeople }) => {
                   Delete
                 </button>
               </td>
+              <td>
+                <Link to={`/placeorder/${person.personId}`}>
+                  <button>Place New Order</button>
+                </Link>
+              </td>
             </tr>
           ))}
         </tbody>
