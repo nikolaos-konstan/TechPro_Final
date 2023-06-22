@@ -3,7 +3,7 @@ import { ColorBox } from "../Items/ColorBox";
 import "./PlaceOrder.css";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import { Counter } from "../Orders/Counter";
+import { OrderButtons } from "../Orders/OrderButtons";
 
 export const PlaceOrder = ({ items, orders, loadOrders }) => {
   const [lastOrderId, setLastOrderId] = useState(0);
@@ -44,8 +44,7 @@ export const PlaceOrder = ({ items, orders, loadOrders }) => {
           {items.map((name) => (
             <div key={name.itemId}>
               <ColorBox name={name.itemName} />
-              <button onClick={addProduct}>Add to Order</button>
-              <Counter />
+              <OrderButtons addProduct={addProduct} />
             </div>
           ))}
         </div>

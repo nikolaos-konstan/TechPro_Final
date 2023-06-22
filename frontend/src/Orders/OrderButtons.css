@@ -1,0 +1,13 @@
+.counter-container {
+  background-color: aqua;
+  display: flex;
+}
+
+.counter-display {
+  flex: auto;
+}
+
+.counter-operation {
+  color: pink;
+  width: 40px;
+}
