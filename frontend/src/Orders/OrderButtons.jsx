@@ -12,6 +12,8 @@ export const OrderButtons = ({
 }) => {
   //Counter
   const [counter, setCounter] = useState(0);
+  const [isDisabled, setIsDisabled] = useState(false);
+  const [buttonMessage, setButtonMessage] = useState("Add to order");
   const increaseCount = () => {
     setCounter((prev) => prev + 1);
     //Insert this in every add button, only necessary the first time in order to setLastOrderId
@@ -40,11 +42,14 @@ export const OrderButtons = ({
   const postOrderDetails = async (orderDetails) => {
     await axios.post("http://localhost:8080/orderdetails", orderDetails);
     loadOrderDetails();
+    setIsDisabled(true);
+    setCounter(0);
+    setButtonMessage("Item Added!");
   };
   return (
     <div>
-      <button onClick={addProduct} disabled={counter === 0}>
-        Add to Order
+      <button onClick={addProduct} disabled={counter === 0 || isDisabled}>
+        {buttonMessage}
       </button>
       <div>
         <div className="counter-container">
@@ -56,7 +61,11 @@ export const OrderButtons = ({
             -
           </button>
           <div className="counter-display">{counter}</div>
-          <button className="counter-operation" onClick={increaseCount}>
+          <button
+            className="counter-operation"
+            onClick={increaseCount}
+            disabled={isDisabled}
+          >
             +
           </button>
         </div>
