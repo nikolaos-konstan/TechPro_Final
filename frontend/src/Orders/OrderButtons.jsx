@@ -1,7 +1,15 @@
 import { useState } from "react";
 import "./OrderButtons.css";
+import axios from "axios";
 
-export const OrderButtons = ({ addProduct, orders, setLastOrderId }) => {
+export const OrderButtons = ({
+  lastOrderId,
+  orders,
+  setLastOrderId,
+  id,
+  itemId,
+  loadOrderDetails,
+}) => {
   //Counter
   const [counter, setCounter] = useState(0);
   const increaseCount = () => {
@@ -14,6 +22,25 @@ export const OrderButtons = ({ addProduct, orders, setLastOrderId }) => {
     setCounter((prev) => prev - 1);
   };
   //End of Counter
+
+  const addProduct = () => {
+    console.log(lastOrderId);
+    console.log(itemId);
+    const orderDetails = {
+      order: {
+        orderId: Number(lastOrderId),
+      },
+      item: { itemId: Number(itemId) },
+      quantity: counter,
+    };
+    console.log(orderDetails);
+    postOrderDetails(orderDetails);
+  };
+
+  const postOrderDetails = async (orderDetails) => {
+    await axios.post("http://localhost:8080/orderdetails", orderDetails);
+    loadOrderDetails();
+  };
   return (
     <div>
       <button onClick={addProduct} disabled={counter === 0}>

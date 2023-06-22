@@ -5,9 +5,9 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { OrderButtons } from "../Orders/OrderButtons";
 
-export const PlaceOrder = ({ items, orders, loadOrders }) => {
+export const PlaceOrder = ({ items, orders, loadOrders, loadOrderDetails }) => {
   const [lastOrderId, setLastOrderId] = useState(0);
-  //Use useRef to bypass the second mount of React due to Strict Mode//
+  //Use useRef to bypass the second mount of React due to Strict Mode in useEffect//
   const effectRan = useRef(false);
   const { id } = useParams();
   const order = { people: { personId: Number(id) } };
@@ -25,10 +25,6 @@ export const PlaceOrder = ({ items, orders, loadOrders }) => {
     loadOrders();
   };
 
-  const addProduct = () => {
-    console.log(lastOrderId);
-  };
-
   return (
     <div>
       <div className="place-order-grid-container">
@@ -40,8 +36,11 @@ export const PlaceOrder = ({ items, orders, loadOrders }) => {
               <ColorBox name={name.itemName} />
               <OrderButtons
                 setLastOrderId={setLastOrderId}
-                addProduct={addProduct}
                 orders={orders}
+                lastOrderId={lastOrderId}
+                id={id}
+                itemId={name.itemId}
+                loadOrderDetails={loadOrderDetails}
               />
             </div>
           ))}
