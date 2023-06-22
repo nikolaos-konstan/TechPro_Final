@@ -7,7 +7,6 @@ import { OrderButtons } from "../Orders/OrderButtons";
 import { ConfirmCancelOrder } from "../Orders/ConfirmCancelOrder";
 
 export const PlaceOrder = ({ items, orders, loadOrders, loadOrderDetails }) => {
-  const [lastOrderId, setLastOrderId] = useState(0);
   //Use useRef to bypass the second mount of React due to Strict Mode in useEffect//
   const effectRan = useRef(false);
   const { id } = useParams();
@@ -29,7 +28,6 @@ export const PlaceOrder = ({ items, orders, loadOrders, loadOrderDetails }) => {
   };
 
   const cancelOrder = () => {
-    setLastOrderId(orders.at(-1).orderId);
     openModal();
   };
 
@@ -47,9 +45,7 @@ export const PlaceOrder = ({ items, orders, loadOrders, loadOrderDetails }) => {
             <div key={name.itemId}>
               <ColorBox name={name.itemName} />
               <OrderButtons
-                setLastOrderId={setLastOrderId}
                 orders={orders}
-                lastOrderId={lastOrderId}
                 id={id}
                 itemId={name.itemId}
                 loadOrderDetails={loadOrderDetails}
@@ -64,8 +60,8 @@ export const PlaceOrder = ({ items, orders, loadOrders, loadOrderDetails }) => {
         {openEdit && (
           <ConfirmCancelOrder
             setOpenEdit={setOpenEdit}
-            lastOrderId={lastOrderId}
             loadOrders={loadOrders}
+            orders={orders}
           />
         )}
       </div>

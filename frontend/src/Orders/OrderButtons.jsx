@@ -16,8 +16,7 @@ export const OrderButtons = ({
   const [buttonMessage, setButtonMessage] = useState("Add to order");
   const increaseCount = () => {
     setCounter((prev) => prev + 1);
-    //Insert this in every add button, only necessary the first time in order to setLastOrderId
-    setLastOrderId(orders.at(-1).orderId);
+    console.log(orders.at(-1).orderId);
   };
 
   const decreaseCount = () => {
@@ -28,7 +27,7 @@ export const OrderButtons = ({
   const addProduct = () => {
     const orderDetails = {
       order: {
-        orderId: Number(lastOrderId),
+        orderId: Number(orders.at(-1).orderId),
       },
       item: { itemId: Number(itemId) },
       quantity: counter,

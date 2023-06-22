@@ -6,11 +6,13 @@ export const ConfirmCancelOrder = ({
   setOpenEdit,
   lastOrderId,
   loadOrders,
+  orders,
 }) => {
   let navigate = useNavigate();
-  const deleteOrder = async (lastOrderId) => {
+  const deleteOrder = async () => {
     navigate("/");
-    //await axios.delete(`http://localhost:8080/orders/${lastOrderId}`);
+    console.log(orders.at(-1).orderId);
+    await axios.delete(`http://localhost:8080/orders/${orders.at(-1).orderId}`);
     loadOrders();
   };
   return (
