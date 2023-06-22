@@ -1,14 +1,16 @@
 import axios from "axios";
 import "../People/Modal.css";
+import { useNavigate } from "react-router-dom";
 
 export const ConfirmCancelOrder = ({
   setOpenEdit,
   lastOrderId,
-  id,
   loadOrders,
 }) => {
-  const deleteOrder = async (id) => {
-    await axios.delete(`http://localhost:8080/orders/${id}`);
+  let navigate = useNavigate();
+  const deleteOrder = async (lastOrderId) => {
+    navigate("/");
+    //await axios.delete(`http://localhost:8080/orders/${lastOrderId}`);
     loadOrders();
   };
   return (

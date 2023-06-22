@@ -66,7 +66,6 @@ export const PlaceOrder = ({ items, orders, loadOrders, loadOrderDetails }) => {
             setOpenEdit={setOpenEdit}
             lastOrderId={lastOrderId}
             loadOrders={loadOrders}
-            id={id}
           />
         )}
       </div>
