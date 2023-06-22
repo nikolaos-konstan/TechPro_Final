@@ -26,8 +26,6 @@ export const OrderButtons = ({
   //End of Counter
 
   const addProduct = () => {
-    console.log(lastOrderId);
-    console.log(itemId);
     const orderDetails = {
       order: {
         orderId: Number(lastOrderId),
@@ -35,7 +33,6 @@ export const OrderButtons = ({
       item: { itemId: Number(itemId) },
       quantity: counter,
     };
-    console.log(orderDetails);
     postOrderDetails(orderDetails);
   };
 
