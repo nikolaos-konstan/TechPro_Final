@@ -31,10 +31,10 @@ export const PlaceOrder = ({ items, orders, loadOrders }) => {
 
   return (
     <div>
-      <div>
-        <h1>Items</h1>
+      <div className="place-order-grid-container">
+        <h1 className="place-order-grid-title">Items</h1>
 
-        <div className="box-container">
+        <div className="box-container place-order">
           {items.map((name) => (
             <div key={name.itemId}>
               <ColorBox name={name.itemName} />
@@ -45,6 +45,10 @@ export const PlaceOrder = ({ items, orders, loadOrders }) => {
               />
             </div>
           ))}
+        </div>
+        <div className="place-order-grid-buttons">
+          <button>Cancel</button>
+          <button>Confirm</button>
         </div>
       </div>
     </div>
