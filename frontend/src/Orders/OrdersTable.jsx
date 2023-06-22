@@ -28,6 +28,7 @@ export const OrdersTable = ({
   const deleteOrder = async (id) => {
     await axios.delete(`http://localhost:8080/orders/${id}`);
     loadOrders();
+    setFilteredArray([]);
   };
 
   return (
