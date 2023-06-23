@@ -163,3 +163,134 @@ a {
 }
 
 /*---------------------------HOME PAGE END*/
+/*ITEMS PAGE----------------------------*/
+.color-box {
+  width: 100px;
+  height: 140px;
+  border-radius: 30px;
+
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 10px;
+  align-items: center;
+}
+
+.color-box-top {
+  height: 90px;
+  width: 70px;
+  border-radius: 20px;
+}
+
+.color-box-bottom {
+  height: 20%;
+  color: var(--plastic04);
+  font-family: "Palanquin", sans-serif;
+}
+/* input box */
+.container-color-input-master {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  flex: 1;
+}
+
+.container-item-input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.text-element-color-input {
+  margin-right: 10px;
+  color: var(--plastic02);
+  font-family: "Palanquin", sans-serif;
+}
+.input-field-color-input {
+  width: 120px;
+  padding: 5px;
+}
+
+.add-button-generate-color-input {
+  margin: 10px 50px 10px 10px;
+  width: 50px;
+  border-radius: 24px;
+  background-color: var(--plastic04);
+}
+
+.beaker {
+  width: 24px;
+}
+
+.container-generate-colour {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.items-master {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+/* Items grid*/
+.box-container {
+  margin-bottom: 20px;
+
+  border-right: thin solid var(--browns06);
+  border-left: thin solid var(--browns06);
+  width: 95%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: flex-start;
+}
+
+.item-unit {
+}
+
+.delete-color-button {
+  background-color: var(--green04);
+  color: var(--plastic02);
+  font-family: "Palanquin", sans-serif;
+  padding: 5px;
+  border-radius: 10px;
+}
+.delete-color-button:hover {
+  background-color: var(--beach03);
+}
+
+/*Add-button for buy page*/
+.add-button {
+  width: 50px;
+  height: 50px;
+  border: none;
+  background-color: #f0f0f0;
+  position: relative;
+  cursor: pointer;
+}
+
+.add-button:before,
+.add-button:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 70%;
+  height: 4px;
+  background-color: #333333;
+  transform: translate(-50%, -50%);
+}
+
+.add-button:before {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.add-button:hover:before,
+.add-button:hover:after {
+  background-color: #666666;
+}
+
+/*---------------------------ITEMS PAGE END*/
+/*PEOPLE PAGE----------------------------*/
