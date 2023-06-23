@@ -1,0 +1,45 @@
+.btn {
+  border: 0;
+  padding: 15px;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.btn-disable {
+  cursor: not-allowed;
+}
+
+.btn-save {
+  background-color: green;
+  color: white;
+}
+
+.btn-disabled {
+  background-color: rgb(155, 155, 155);
+  opacity: 0.8;
+  cursor: not-allowed;
+}
+
+.btn-reset {
+  background-color: rgb(206, 185, 69);
+  color: white;
+}
+
+.error {
+  margin-top: 10px;
+  color: red;
+}
+
+.btn-delete {
+  background-color: rgb(255, 0, 0);
+  color: white;
+}
+
+.mr-10 {
+  margin-right: 10px;
+}
+
+.pagination-container {
+  padding-bottom: 20px;
+}

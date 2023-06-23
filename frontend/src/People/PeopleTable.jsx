@@ -1,14 +1,37 @@
 import axios from "axios";
 import "../pages/People.css";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Paginate } from "../Pagination/Pagination";
 
 export const PeopleTable = ({ people, loadPeople }) => {
+  // Pagination
+  const [currentPage, setCurrentPage] = useState(1);
+  const [usersPerPage] = useState(8);
+
+  const indexOfLastUser = currentPage * usersPerPage;
+  const indexOfFirstUser = indexOfLastUser - usersPerPage;
+  const currentUsers = people.slice(indexOfFirstUser, indexOfLastUser);
+
+  const previousPage = () => {
+    if (currentPage !== 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  const nextPage = () => {
+    if (currentPage !== Math.ceil(people.length / usersPerPage)) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+  // End of Pagination
   const deletePerson = async (id) => {
     await axios.delete(`http://localhost:8080/people/${id}`);
     loadPeople();
   };
   return (
     <div className="grid-item-1">
+      <Paginate previousPage={previousPage} nextPage={nextPage} />
       <table>
         <thead>
           <tr>
@@ -21,9 +44,9 @@ export const PeopleTable = ({ people, loadPeople }) => {
           </tr>
         </thead>
         <tbody>
-          {people.map((person, index) => (
+          {currentUsers.map((person, index) => (
             <tr key={person.personId}>
-              <td>{index + 1}</td>
+              <td>{person.personId}</td>
               <td>{person.firstName}</td>
               <td>{person.lastName}</td>
               <td>{person.email}</td>
