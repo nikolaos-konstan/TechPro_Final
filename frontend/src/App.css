@@ -136,7 +136,7 @@ a {
   width: 300px;
   height: 550px;
   background-color: var(--green05);
-  border-radius: 20px;
+  border-radius: 60px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -148,6 +148,7 @@ a {
   font-size: 160px;
   font-weight: bold;
   color: var(--plastic02);
+  border-bottom: thick solid var(--plastic02);
 }
 
 .home-card-word {
