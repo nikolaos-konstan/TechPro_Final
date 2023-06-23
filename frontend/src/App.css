@@ -63,6 +63,8 @@
   --tropic03: #fff3eb;
   --tropic04: #e0ab9a;
   --tropic05: #ef8a84;
+
+  --neworder: #eec76f;
 }
 
 .App {
@@ -194,7 +196,7 @@ a {
 
 .color-box-bottom {
   height: 20%;
-  color: var(--plastic04);
+  color: var(--plastic03);
   font-family: "Palanquin", sans-serif;
 }
 /* input box */
@@ -218,13 +220,19 @@ a {
 .input-field-color-input {
   width: 120px;
   padding: 5px;
+  border-radius: 10px;
 }
 
 .add-button-generate-color-input {
   margin: 10px 50px 10px 10px;
-  width: 50px;
+  width: 35px;
+  color: var(--beige02);
+  height: 35px;
   border-radius: 24px;
   background-color: var(--plastic04);
+}
+.add-button-generate-color-input:hover {
+  background-color: var(--plastic03);
 }
 
 .beaker {
@@ -256,11 +264,14 @@ a {
 }
 
 .delete-color-button {
-  background-color: var(--green04);
-  color: var(--plastic02);
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: var(--plastic035);
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
   font-family: "Palanquin", sans-serif;
-  padding: 5px;
-  border-radius: 10px;
+  letter-spacing: 0.02rem;
 }
 .delete-color-button:hover {
   background-color: var(--beach03);
@@ -304,7 +315,7 @@ a {
   padding: 20px;
   display: grid;
   grid-template-columns: 3fr 1fr;
-  grid-template-rows: 3fr 1fr;
+  grid-template-rows: 500px 100px;
 
   gap: 20px;
 }
@@ -423,7 +434,7 @@ tbody tr:nth-child(odd) {
 .place-new-order {
   padding: 10px 20px;
   border-radius: 20px;
-  background-color: var(--tropic04);
+  background-color: var(--neworder);
   color: var(--vivid01);
   font-weight: bold;
   cursor: pointer;
@@ -493,7 +504,7 @@ input {
   margin-top: 5px;
   margin-bottom: 5px;
   border-radius: 5px;
-  background-color: #4c8891;
+  background-color: var(--plastic035);
   color: #fff;
   font-weight: bold;
   cursor: pointer;
@@ -505,11 +516,29 @@ input {
   background-color: var(--plastic03);
 }
 /*Generate people*/
-.grid-item-3 {
-  background-color: #00a2e4;
+.grid-item-3-people {
   grid-column: 2;
   grid-row: 2;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+.generate-people-button {
+  padding: 10px 10px;
+  width: 150px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  background-color: var(--plastic035);
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  font-family: "Palanquin", sans-serif;
+  letter-spacing: 0.02rem;
 }
 
+.generate-people-button:hover {
+  background-color: var(--plastic03);
+}
 /*---------------------------PEOPLE PAGE END*/
 /*ORDER PAGE----------------------------*/

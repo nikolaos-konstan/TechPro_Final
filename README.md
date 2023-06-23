@@ -9,3 +9,7 @@ TO DO
 -add pagination
 -add warnings for delete when children present
 -About Page
+
+-new people to appear on top of the list
+-pagination for orders and items
+-message for hex value

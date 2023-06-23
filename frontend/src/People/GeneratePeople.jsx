@@ -30,8 +30,10 @@ export const GeneratePeople = ({ loadPeople }) => {
   };
   //const generate = () => console.log(data);
   return (
-    <div className="grid-item-3">
-      <button onClick={generate}>Generate people</button>
+    <div className="grid-item-3-people">
+      <button className="generate-people-button" onClick={generate}>
+        Generate people
+      </button>
     </div>
   );
 };
