@@ -1,3 +1,4 @@
+import "../App.css";
 import { Button } from "./Button";
 
 export const Paginate = ({ previousPage, nextPage }) => {
@@ -7,14 +8,14 @@ export const Paginate = ({ previousPage, nextPage }) => {
         id="btnPrevious"
         type="Submit"
         className="btn-reset mr-10"
-        value="Previous"
+        value="<"
         clickHandler={previousPage}
       />
       <Button
         id="btnNext"
         type="Submit"
         className="btn-reset"
-        value="Next"
+        value=">"
         clickHandler={nextPage}
       />
     </div>

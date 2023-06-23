@@ -1,5 +1,5 @@
 import axios from "axios";
-import "../pages/People.css";
+import "../App.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { Paginate } from "../Pagination/Pagination";
@@ -7,7 +7,7 @@ import { Paginate } from "../Pagination/Pagination";
 export const PeopleTable = ({ people, loadPeople }) => {
   // Pagination
   const [currentPage, setCurrentPage] = useState(1);
-  const [usersPerPage] = useState(8);
+  const [usersPerPage] = useState(10);
 
   const indexOfLastUser = currentPage * usersPerPage;
   const indexOfFirstUser = indexOfLastUser - usersPerPage;
@@ -50,15 +50,20 @@ export const PeopleTable = ({ people, loadPeople }) => {
               <td>{person.firstName}</td>
               <td>{person.lastName}</td>
               <td>{person.email}</td>
-              <td>
-                <Link to={`/persondetails/${person.personId}`}>Details</Link>
-                <button onClick={() => deletePerson(person.personId)}>
+              <td className="action-column">
+                <Link to={`/persondetails/${person.personId}`}>
+                  <button className="details-button">Details</button>
+                </Link>
+                <button
+                  className="delete-button"
+                  onClick={() => deletePerson(person.personId)}
+                >
                   Delete
                 </button>
               </td>
               <td>
                 <Link to={`/placeorder/${person.personId}`}>
-                  <button>Place New Order</button>
+                  <button className="place-new-order">Place New Order</button>
                 </Link>
               </td>
             </tr>

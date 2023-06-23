@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../pages/People.css";
+import "../App.css";
 import axios from "axios";
 
 export const AddPerson = ({ loadPeople }) => {
@@ -34,7 +34,7 @@ export const AddPerson = ({ loadPeople }) => {
     });
   };
   return (
-    <div className="grid-item-2">
+    <div className="grid-item-2-addperson">
       <form onSubmit={(e) => onSubmitData(e)}>
         <h2>Add Person</h2>
         <div className="form-group">
@@ -78,10 +78,18 @@ export const AddPerson = ({ loadPeople }) => {
             required
           />
         </div>
-        <button type="submit">Submit</button>
-        <button onClick={onClear} type="submit">
-          Clear
-        </button>
+        <div className="form-buttons-container">
+          <button className="form-submit-button" type="submit">
+            Submit
+          </button>
+          <button
+            className="form-submit-button"
+            onClick={onClear}
+            type="submit"
+          >
+            Clear
+          </button>
+        </div>
       </form>
     </div>
   );

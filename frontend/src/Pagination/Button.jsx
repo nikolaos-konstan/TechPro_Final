@@ -1,4 +1,4 @@
-import "./Style.css";
+import "../App.css";
 
 export const Button = (props) => {
   const btnEnableDisable = !props.isDisabled ? "btn-enable" : "btn-disabled";

@@ -38,6 +38,7 @@
   --plastic01: #9dc1bd;
   --plastic02: #294549;
   --plastic03: #086784;
+  --plastic035: #4c8891;
   --plastic04: #01868c;
   --plastic05: #deab68;
 
@@ -55,6 +56,13 @@
   --browns04: #fdeaca;
   --browns05: #f2f2f0;
   --browns06: #f2d2a2;
+
+  /*tropic*/
+  --tropic01: #081012;
+  --tropic02: #4d8fc3;
+  --tropic03: #fff3eb;
+  --tropic04: #e0ab9a;
+  --tropic05: #ef8a84;
 }
 
 .App {
@@ -247,9 +255,6 @@ a {
   justify-content: flex-start;
 }
 
-.item-unit {
-}
-
 .delete-color-button {
   background-color: var(--green04);
   color: var(--plastic02);
@@ -294,3 +299,217 @@ a {
 
 /*---------------------------ITEMS PAGE END*/
 /*PEOPLE PAGE----------------------------*/
+.container-people {
+  background-color: var(--browns04);
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  grid-template-rows: 3fr 1fr;
+
+  gap: 20px;
+}
+
+/*Pagination*/
+.btn {
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+  width: 80px;
+  background-color: var(--beach05);
+  color: var(--plastic03);
+}
+.btn:hover {
+  background-color: var(--beach05);
+}
+
+.btn-disable {
+  cursor: not-allowed;
+  background-color: var(--plastic04);
+}
+
+.btn-save {
+  color: var(--plastic03);
+}
+
+.btn-disabled {
+  opacity: 0.8;
+  cursor: not-allowed;
+}
+
+.btn-reset {
+  color: var(--plastic03);
+}
+
+.mr-10 {
+  margin-right: 10px;
+  color: var(--plastic03);
+}
+
+.pagination-container {
+  padding-bottom: 20px;
+  display: flex;
+}
+
+/* PeopleTable*/
+.grid-item-1 {
+  grid-column: 1;
+  grid-row: 1/-1;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 20px; /* Adjust the value to control the amount of rounding */
+  overflow: hidden; /* Ensures rounded corners are visible */
+}
+
+thead th {
+  background-color: var(--beach01);
+  text-align: center;
+  padding: 10px;
+}
+
+tbody td {
+  padding: 10px;
+
+  font-family: "Palanquin", sans-serif;
+}
+
+tbody tr:nth-child(even) {
+  background-color: var(--green01);
+}
+tbody tr:nth-child(odd) {
+  background-color: var(--green03);
+}
+
+.action-column {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.delete-button {
+  padding: 10px 10px;
+  border-radius: 5px;
+  background-color: var(--plastic035);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  font-family: "Palanquin", sans-serif;
+  letter-spacing: 0.02rem;
+}
+
+.details-button {
+  padding: 10px 10px;
+  border-radius: 5px;
+  background-color: var(--plastic035);
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  font-family: "Palanquin", sans-serif;
+  letter-spacing: 0.02rem;
+}
+
+.delete-button:hover {
+  background-color: var(--beach03);
+}
+.details-button:hover {
+  background-color: var(--plastic03);
+  color: white;
+}
+
+.place-new-order {
+  padding: 10px 20px;
+  border-radius: 20px;
+  background-color: var(--tropic04);
+  color: var(--vivid01);
+  font-weight: bold;
+  cursor: pointer;
+  filter: drop-shadow(1px 2px 1px var(--tropic05));
+  font-family: "Palanquin", sans-serif;
+  letter-spacing: 0.02rem;
+}
+
+.place-new-order:hover {
+  transform: scale(1.03);
+}
+
+/*Add Person Form*/
+.grid-item-2-addperson {
+  margin-top: 60px;
+  grid-column: 2;
+  grid-row: 1;
+}
+
+form {
+  width: 300px;
+  margin: 0 auto;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  background-color: var(--beige03);
+  color: var(--tropic01);
+  border-radius: 10px 10px 2px 2px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  background-color: var(--beige03);
+  color: var(--tropic01);
+  border-radius: 2px;
+  font-family: "Palanquin", sans-serif;
+}
+
+input {
+  width: 100%;
+  background-color: var(--beige01);
+  color: var(--tropic01);
+  padding: 8px;
+  border-radius: 2px;
+  border: 1px solid #ccc;
+}
+
+.form-buttons-container {
+  background-color: var(--beige03);
+  border-radius: 2px 2px 10px 10px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.form-submit-button {
+  padding: 5px 00px;
+  width: 90px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  background-color: #4c8891;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  font-family: "Palanquin", sans-serif;
+  letter-spacing: 0.02rem;
+}
+
+.form-submit-button:hover {
+  background-color: var(--plastic03);
+}
+/*Generate people*/
+.grid-item-3 {
+  background-color: #00a2e4;
+  grid-column: 2;
+  grid-row: 2;
+}
+
+/*---------------------------PEOPLE PAGE END*/
+/*ORDER PAGE----------------------------*/
