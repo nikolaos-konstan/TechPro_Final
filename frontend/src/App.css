@@ -6,46 +6,59 @@
 }
 
 :root {
-  --theme: #f7d89e;
+  --beige01: #faf0e6;
+  --beige02: #fff0db;
+  --beige03: #eed9c4;
+  --beige04: #e4d5b7;
+  --beige05: #d9b99b;
+
+  /* Green highlights*/
+  --green01: #e8f4ea;
+  --green02: #e0f0e3;
+  --green03: #d2e7d6;
+  --green04: #c8e1cc;
+  --green05: #b8d8be;
+
+  /* Beach*/
+  --beach01: #96ceb4;
+  --beach02: #ffeead;
+  --beach03: #ff6f69;
+  --beach04: #ffcc5c;
+  --beach05: #88d8b0;
+
+  /*Yellow and Blue*/
+  --pastel01: #ffb449;
+  --pastel02: #fddd5c;
+  --pastel03: #fdfd97;
+  --pastel04: #afc9cf;
+  --pastel05: #789fcc;
+
+  /*Plastic*/
+  --plastic01: #9dc1bd;
+  --plastic02: #294549;
+  --plastic03: #086784;
+  --plastic04: #01868c;
+  --plastic05: #deab68;
+
+  /*Vivid*/
+  --vivid01: #471c0b;
+  --vivid02: #c96332;
+  --vivid03: #ec9e14;
+  --vivid04: #f1e4da;
+  --vivid05: #00a2e4;
+
+  /* Browns*/
+  --browns01: #6e4e39;
+  --browns02: #af794b;
+  --browns03: #d9a560;
+  --browns04: #fdeaca;
+  --browns05: #f2f2f0;
+  --browns06: #f2d2a2;
 }
 
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  background-color: var(--browns04);
 }
 
 a {
