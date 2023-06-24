@@ -32,6 +32,7 @@ export const PeopleTable = ({ people, loadPeople }) => {
   return (
     <div className="grid-item-1">
       <Paginate previousPage={previousPage} nextPage={nextPage} />
+
       <table>
         <thead>
           <tr>

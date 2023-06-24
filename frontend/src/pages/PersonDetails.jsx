@@ -172,8 +172,8 @@ export const PersonDetails = ({ loadPeople, orderDetails, orders }) => {
           </tbody>
         </table>
         <p>
-          *edit and delete missing functionality here. Got to the "All Orders"
-          page
+          *edit and delete missing functionality here. They work in the "All
+          Orders" page
         </p>
       </div>
     </div>

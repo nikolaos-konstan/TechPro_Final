@@ -13,7 +13,8 @@ export const OrderButtons = ({
   //Counter
   const [counter, setCounter] = useState(0);
   const [isDisabled, setIsDisabled] = useState(false);
-  const [buttonMessage, setButtonMessage] = useState("Add to order");
+  const [buttonMessage, setButtonMessage] = useState("Add Item");
+  const [className, setClassName] = useState("add-btn");
   const increaseCount = () => {
     setCounter((prev) => prev + 1);
     console.log(orders.at(-1).orderId);
@@ -32,6 +33,7 @@ export const OrderButtons = ({
       item: { itemId: Number(itemId) },
       quantity: counter,
     };
+    setClassName("added-btn");
     postOrderDetails(orderDetails);
   };
 
@@ -44,7 +46,11 @@ export const OrderButtons = ({
   };
   return (
     <div>
-      <button onClick={addProduct} disabled={counter === 0 || isDisabled}>
+      <button
+        className={className}
+        onClick={addProduct}
+        disabled={counter === 0 || isDisabled}
+      >
         {buttonMessage}
       </button>
       <div>
@@ -54,7 +60,16 @@ export const OrderButtons = ({
             disabled={counter === 0}
             onClick={decreaseCount}
           >
-            -
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth="1.5"
+              stroke="currentColor"
+              className="plus-operator"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M18 12H6" />
+            </svg>
           </button>
           <div className="counter-display">{counter}</div>
           <button
@@ -62,7 +77,20 @@ export const OrderButtons = ({
             onClick={increaseCount}
             disabled={isDisabled}
           >
-            +
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth="1.5"
+              stroke="currentColor"
+              className="plus-operator"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                d="M12 6v12m6-6H6"
+              />
+            </svg>
           </button>
         </div>
       </div>

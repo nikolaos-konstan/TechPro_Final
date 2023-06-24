@@ -18,6 +18,7 @@ export const Paginate = ({ previousPage, nextPage }) => {
         value=">"
         clickHandler={nextPage}
       />
+      <p>*missing page numbers</p>
     </div>
   );
 };

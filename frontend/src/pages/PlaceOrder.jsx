@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { ColorBox } from "../Items/ColorBox";
-import "./PlaceOrder.css";
+import "../App.css";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import { OrderButtons } from "../Orders/OrderButtons";
@@ -38,7 +38,9 @@ export const PlaceOrder = ({ items, orders, loadOrders, loadOrderDetails }) => {
   return (
     <div>
       <div className="place-order-grid-container">
-        <h1 className="place-order-grid-title">Items</h1>
+        <h1 className="place-order-grid-title">
+          Select items to add to the order
+        </h1>
 
         <div className="box-container place-order">
           {items.map((name) => (
@@ -53,19 +55,23 @@ export const PlaceOrder = ({ items, orders, loadOrders, loadOrderDetails }) => {
             </div>
           ))}
         </div>
-        <div className="place-order-grid-buttons">
-          <button onClick={cancelOrder}>Cancel</button>
-          <Link to="/">
-            <button>Confirm</button>
-          </Link>
+        <div className="place-order-all-buttons">
+          <div className="place-order-grid-buttons">
+            <button className="cancel-order-button" onClick={cancelOrder}>
+              Cancel
+            </button>
+            <Link to="/">
+              <button className="cancel-order-button">Confirm</button>
+            </Link>
+          </div>
+          {openEdit && (
+            <ConfirmCancelOrder
+              setOpenEdit={setOpenEdit}
+              loadOrders={loadOrders}
+              orders={orders}
+            />
+          )}
         </div>
-        {openEdit && (
-          <ConfirmCancelOrder
-            setOpenEdit={setOpenEdit}
-            loadOrders={loadOrders}
-            orders={orders}
-          />
-        )}
       </div>
     </div>
   );

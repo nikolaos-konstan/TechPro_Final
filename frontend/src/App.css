@@ -248,6 +248,7 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 20px;
 }
 /* Items grid*/
 .box-container {
@@ -508,7 +509,7 @@ input {
 
 .form-submit-button {
   padding: 5px 00px;
-  width: 90px;
+  width: 80px;
   margin-top: 5px;
   margin-bottom: 5px;
   border-radius: 5px;
@@ -571,7 +572,7 @@ input {
 .card {
   grid-column: 1;
   grid-row: 1;
-  width: auto;
+  width: 300px;
 
   margin-left: auto;
   margin-right: auto;
@@ -639,7 +640,7 @@ input {
 
 .counter-container {
   display: flex;
-  padding: 0px 20px;
+  padding: 0px 15px;
 }
 
 .counter-display {
@@ -649,6 +650,9 @@ input {
 .counter-operation {
   width: 20px;
   background-color: transparent;
+}
+
+.counter-operation:enabled {
   cursor: pointer;
 }
 
@@ -661,4 +665,74 @@ input {
 }
 
 /*---------------------------END OF ORDER PAGE*/
-/*ORDER PAGE----------------------------*/
+/*PLACE ORDER PAGE----------------------------*/
+.place-order-grid-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.place-order-grid-title {
+  background-color: #00a2e4;
+}
+
+.add-btn {
+  padding: 1px 10px;
+  border-radius: 5px;
+  margin-bottom: 2px;
+  background-color: var(--plastic035);
+  color: #fff;
+  font-weight: bold;
+
+  font-family: "Palanquin", sans-serif;
+  letter-spacing: 0.02rem;
+}
+
+.add-btn:enabled {
+  cursor: pointer;
+}
+
+.add-btn:disabled {
+  background-color: var(--plastic01);
+}
+
+.added-btn {
+  padding: 1px 10px;
+  border-radius: 5px;
+  margin-bottom: 2px;
+  background-color: var(--green08);
+  color: #fff;
+  font-weight: bold;
+
+  font-family: "Palanquin", sans-serif;
+  letter-spacing: 0.02rem;
+}
+.place-order-all-buttons {
+  display: flex;
+  flex-direction: column;
+  background-color: #00a2e4;
+}
+.place-order-grid-buttons {
+  display: flex;
+  background-color: yellow;
+  gap: 100px;
+}
+
+.cancel-order-button {
+  padding: 10px 20px;
+  border-radius: 10px;
+
+  background-color: var(--plastic035);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  font-family: "Palanquin", sans-serif;
+  letter-spacing: 0.02rem;
+}
+
+.cancel-order-button:hover {
+  background-color: var(--plastic03);
+}
+/*---------------------END OF PLACE ORDER PAGE*/
+/*PLACE ORDER PAGE----------------------------*/
