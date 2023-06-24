@@ -93,7 +93,7 @@ export const EditQuantity = ({
           className="details-button"
           onClick={() => setIsEdit((prev) => !prev)}
         >
-          {isEdit ? "Cancel" : "Edit"}
+          {isEdit ? "Cancel" : "Edit*"}
         </button>
         <button
           className="delete-button"

@@ -15,7 +15,7 @@ export const OrderDetailsTable = ({
       <table>
         <thead>
           <tr>
-            <th>Order Number</th>
+            <th>Order Details #</th>
             <th>Item</th>
 
             <th>Quantity</th>
@@ -26,7 +26,7 @@ export const OrderDetailsTable = ({
           {filteredArray.map((orderDetails) => (
             <tr key={orderDetails.orderDetailsId}>
               <td className="td-input-display">
-                {orderDetails.orderDetailsId}
+                {orderDetails.order.orderId}-{orderDetails.orderDetailsId}
               </td>
               <td className="td-input-display">{orderDetails.item.itemName}</td>
               <EditQuantity
@@ -40,6 +40,10 @@ export const OrderDetailsTable = ({
           ))}
         </tbody>
       </table>
+      <p className="Remove Later">
+        *Edit works but it doesn't refresh automatically yet, click on the
+        Details btn
+      </p>
     </div>
   );
 };
