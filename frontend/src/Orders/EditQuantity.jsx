@@ -31,12 +31,13 @@ export const EditQuantity = ({
 
   return (
     <>
-      <td>
+      <td className="td-input-display">
         {!isEdit ? (
           orderDetails.quantity
         ) : (
           <div>
             <button
+              className="save-changes-button"
               disabled={counter === 0}
               onClick={() =>
                 editQuantity(filteredArray, orderDetails.orderDetailsId)
@@ -44,29 +45,58 @@ export const EditQuantity = ({
             >
               Save Changes
             </button>
-            <div>
-              <div className="counter-container">
-                <button
-                  className="counter-operation"
-                  disabled={counter === 0}
-                  onClick={decreaseCount}
+
+            <div className="counter-container">
+              <button
+                className="counter-operation"
+                disabled={counter === 0}
+                onClick={decreaseCount}
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth="1.5"
+                  stroke="currentColor"
+                  className="plus-operator"
                 >
-                  -
-                </button>
-                <div className="counter-display">{counter}</div>
-                <button className="counter-operation" onClick={increaseCount}>
-                  +
-                </button>
-              </div>
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M18 12H6"
+                  />
+                </svg>
+              </button>
+              <div className="counter-display">{counter}</div>
+              <button className="counter-operation" onClick={increaseCount}>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth="1.5"
+                  stroke="currentColor"
+                  className="plus-operator"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M12 6v12m6-6H6"
+                  />
+                </svg>
+              </button>
             </div>
           </div>
         )}
       </td>
-      <td>
-        <button onClick={() => setIsEdit((prev) => !prev)}>
+      <td className="action-column">
+        <button
+          className="details-button"
+          onClick={() => setIsEdit((prev) => !prev)}
+        >
           {isEdit ? "Cancel" : "Edit"}
         </button>
         <button
+          className="delete-button"
           onClick={() =>
             deleteOrderDetails(filteredArray, orderDetails.orderDetailsId)
           }

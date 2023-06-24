@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../pages/Orders.css";
+import "../App.css";
 import axios from "axios";
 
 import { OrderDetailsTable } from "./OrderDetailsTable";
@@ -47,23 +47,27 @@ export const OrdersTable = ({
           <tbody>
             {orders.map((order, index) => (
               <tr key={order.orderId}>
-                <td>{order.orderId}</td>
-                <td>
+                <td className="td-input-display">{order.orderId}</td>
+                <td className="td-input-display">
                   {order.people.firstName +
                     " " +
                     order.people.lastName +
                     " - " +
                     order.people.email}
                 </td>
-                <td>{order.orderDate}</td>
-                <td>
-                  <button onClick={() => deleteOrder(order.orderId)}>
-                    Delete
-                  </button>
+                <td className="td-input-display">{order.orderDate}</td>
+                <td className="action-column">
                   <button
+                    className="details-button"
                     onClick={() => filterByOrderId(orderDetails, order.orderId)}
                   >
-                    View Details
+                    Details
+                  </button>
+                  <button
+                    className="delete-button"
+                    onClick={() => deleteOrder(order.orderId)}
+                  >
+                    Delete
                   </button>
                 </td>
               </tr>

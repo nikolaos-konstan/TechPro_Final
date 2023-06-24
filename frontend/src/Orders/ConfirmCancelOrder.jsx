@@ -1,5 +1,5 @@
 import axios from "axios";
-import "../People/Modal.css";
+import "../App.css";
 import { useNavigate } from "react-router-dom";
 
 export const ConfirmCancelOrder = ({

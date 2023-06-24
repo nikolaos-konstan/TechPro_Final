@@ -1,4 +1,4 @@
-import "./Orders.css";
+import "../App.css";
 import { OrdersTable } from "../Orders/OrdersTable";
 
 export const Orders = ({

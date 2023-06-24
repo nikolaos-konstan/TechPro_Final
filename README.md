@@ -13,3 +13,10 @@ TO DO
 -new people to appear on top of the list
 -pagination for orders and items
 -message for hex value
+
+-in the tables, when the line breaks, the action buttons are not aligned
+-edit quantity css for personaldetails page
+-delete button functionality for order and orderdetails in persoanldetails page
+
+-add color dot in item name in orderdetails
+-align operators with quanity change in the edit

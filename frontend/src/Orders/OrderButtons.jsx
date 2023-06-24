@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./OrderButtons.css";
+import "../App.css";
 import axios from "axios";
 
 export const OrderButtons = ({

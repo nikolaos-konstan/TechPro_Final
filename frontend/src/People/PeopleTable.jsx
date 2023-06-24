@@ -46,10 +46,10 @@ export const PeopleTable = ({ people, loadPeople }) => {
         <tbody>
           {currentUsers.map((person, index) => (
             <tr key={person.personId}>
-              <td>{person.personId}</td>
-              <td>{person.firstName}</td>
-              <td>{person.lastName}</td>
-              <td>{person.email}</td>
+              <td className="td-input-display">{person.personId}</td>
+              <td className="td-input-display">{person.firstName}</td>
+              <td className="td-input-display">{person.lastName}</td>
+              <td className="td-input-display">{person.email}</td>
               <td className="action-column">
                 <Link to={`/persondetails/${person.personId}`}>
                   <button className="details-button">Details</button>

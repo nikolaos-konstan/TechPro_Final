@@ -19,6 +19,11 @@
   --green03: #d2e7d6;
   --green04: #c8e1cc;
   --green05: #b8d8be;
+  --green06: #21c058;
+  --green07: #1b9d48;
+  --green08: #157a38;
+  --green09: #0f5728;
+  --green10: #062310;
 
   /* Beach*/
   --beach01: #96ceb4;
@@ -81,12 +86,6 @@ body {
 
 a {
   text-decoration: none;
-}
-
-*:disabled {
-  background-color: rgb(107, 59, 31);
-  color: linen;
-  opacity: 1;
 }
 
 /*NAVBAR----------------------------*/
@@ -388,6 +387,12 @@ tbody td {
   font-family: "Palanquin", sans-serif;
 }
 
+/* wrap long inputs*/
+.td-input-display {
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
 tbody tr:nth-child(even) {
   background-color: var(--green01);
 }
@@ -398,7 +403,6 @@ tbody tr:nth-child(odd) {
 .action-column {
   display: flex;
   justify-content: center;
-  align-items: center;
   gap: 10px;
 }
 .delete-button {
@@ -452,6 +456,10 @@ tbody tr:nth-child(odd) {
   margin-top: 60px;
   grid-column: 2;
   grid-row: 1;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
 }
 
 form {
@@ -483,7 +491,7 @@ label {
 
 input {
   width: 100%;
-  background-color: var(--beige01);
+  background-color: white;
   color: var(--tropic01);
   padding: 8px;
   border-radius: 2px;
@@ -541,4 +549,116 @@ input {
   background-color: var(--plastic03);
 }
 /*---------------------------PEOPLE PAGE END*/
+/*PERSON DETAILS PAGE----------------------------*/
+
+.pd-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr 2fr;
+  grid-template-rows: 800px;
+  padding: 20px;
+  gap: 10px;
+}
+
+.grid-item-pd-ordersTable {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.grid-item-pd-orderDetailsTable {
+  grid-column: 3;
+  grid-row: 1;
+}
+.card {
+  grid-column: 1;
+  grid-row: 1;
+  width: auto;
+
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.field-value {
+  display: block;
+
+  padding: 5px 10px;
+  background-color: var(--beige01);
+  color: var(--tropic01);
+  border-radius: 3px;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+/*Modal Window*/
+.edit-form {
+  width: auto;
+  margin-top: 10px;
+}
+/*---------------------------END OF PERSON DETAILS PAGE*/
+/*ORDER PAGE----------------------------*/
+.container-orderspage {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 800px;
+  padding: 20px;
+  gap: 20px;
+}
+
+.grid-item-ordersTable {
+  grid-column: 1;
+  grid-row: 1/-1;
+}
+.grid-item-orderDetails {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.save-changes-button {
+  padding: 1px 5px;
+  border-radius: 5px;
+  margin-bottom: 2px;
+  background-color: var(--plastic035);
+  color: #fff;
+  font-weight: bold;
+
+  font-family: "Palanquin", sans-serif;
+  letter-spacing: 0.02rem;
+}
+.save-changes-button:hover:enabled {
+  background-color: var(--green08);
+  cursor: pointer;
+}
+.save-changes-button:disabled {
+  background-color: var(--beach01);
+}
+
+.counter-container {
+  display: flex;
+  padding: 0px 20px;
+}
+
+.counter-display {
+  flex: auto;
+}
+
+.counter-operation {
+  width: 20px;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.counter-operation:disabled {
+  opacity: 0.2;
+}
+
+.plus-operator {
+  width: 24px;
+}
+
+/*---------------------------END OF ORDER PAGE*/
 /*ORDER PAGE----------------------------*/

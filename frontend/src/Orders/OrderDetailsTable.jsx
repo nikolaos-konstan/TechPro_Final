@@ -1,4 +1,4 @@
-import "../pages/Orders.css";
+import "../App.css";
 import { EditQuantity } from "./EditQuantity";
 
 export const OrderDetailsTable = ({
@@ -25,8 +25,10 @@ export const OrderDetailsTable = ({
         <tbody>
           {filteredArray.map((orderDetails) => (
             <tr key={orderDetails.orderDetailsId}>
-              <td>{orderDetails.orderDetailsId}</td>
-              <td>{orderDetails.item.itemName}</td>
+              <td className="td-input-display">
+                {orderDetails.orderDetailsId}
+              </td>
+              <td className="td-input-display">{orderDetails.item.itemName}</td>
               <EditQuantity
                 orderDetails={orderDetails}
                 filteredArray={filteredArray}

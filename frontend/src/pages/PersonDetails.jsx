@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-import "./PersonDetails.css";
+import "../App.css";
 import EditUser from "../People/EditUser";
 
 export const PersonDetails = ({ loadPeople, orderDetails, orders }) => {
@@ -71,43 +71,46 @@ export const PersonDetails = ({ loadPeople, orderDetails, orders }) => {
   return (
     <div className="pd-container">
       <div className="card">
-        <h2 className="card-title">User Information</h2>
-        <div className="card-content">
-          <div className="field">
-            <label htmlFor="first-name">First Name:</label>
-            <span className="field-value">{firstName}</span>
-          </div>
-          <div className="field">
-            <label htmlFor="last-name">Last Name:</label>
-            <span className="field-value">{lastName}</span>
-          </div>
-          <div className="field">
-            <label htmlFor="email">Email:</label>
-            <span className="field-value">{email}</span>
-          </div>
+        <h2>User Information</h2>
+
+        <div className="form-group">
+          <label htmlFor="first-name">First Name:</label>
+          <span className="field-value">{firstName}</span>
         </div>
-        <div className="card-actions">
+        <div className="form-group">
+          <label htmlFor="last-name">Last Name:</label>
+          <span className="field-value">{lastName}</span>
+        </div>
+        <div className="form-group">
+          <label htmlFor="email">Email:</label>
+          <span className="field-value">{email}</span>
+        </div>
+
+        <div className="form-buttons-container">
           <button
-            className="edit-button"
+            className="form-submit-button"
             onClick={() => {
               setOpenEdit(true);
             }}
           >
             Edit
           </button>
-          {/* <button
-          // onClick={() =>
-          //   filterOrderDetailsByPersonId(restructureDetailsdArray, id)
-          // }
-          >
-            Show Details
-          </button> */}
+
           <button
+            className="form-submit-button"
             onClick={() => filterOrdersByPersonId(restructureOrdersdArray, id)}
           >
-            Show Details
+            Orders
           </button>
         </div>
+        {openEdit && (
+          <EditUser
+            openEdit={openEdit}
+            setOpenEdit={setOpenEdit}
+            id={id}
+            loadPerson={loadPerson}
+          />
+        )}
       </div>
       <div className="grid-item-pd-ordersTable">
         <table>
@@ -122,12 +125,12 @@ export const PersonDetails = ({ loadPeople, orderDetails, orders }) => {
           <tbody>
             {filteredOrdersArray.map((order, index) => (
               <tr key={index}>
-                <td>{order.orderId}</td>
-                <td>{order.orderDate}</td>
+                <td className="td-input-display">{order.orderId}</td>
+                <td className="td-input-display">{order.orderDate}</td>
 
-                <td>
-                  <button>Delete</button>
+                <td className="action-column">
                   <button
+                    className="details-button"
                     onClick={() =>
                       filterOrderDetailsByOrderId(
                         restructureDetailsdArray,
@@ -135,8 +138,9 @@ export const PersonDetails = ({ loadPeople, orderDetails, orders }) => {
                       )
                     }
                   >
-                    View Details
+                    Details
                   </button>
+                  <button className="delete-button">Delete</button>
                 </td>
               </tr>
             ))}
@@ -156,27 +160,18 @@ export const PersonDetails = ({ loadPeople, orderDetails, orders }) => {
           <tbody>
             {filteredDetailsArray.map((order, index) => (
               <tr key={index}>
-                <td>{order.orderDetailsId}</td>
-                <td>{order.itemName}</td>
-                <td>{order.quantity}</td>
-                <td>
-                  <button>Delete</button>
-                  <button>Edit</button>
+                <td className="td-input-display">{order.orderDetailsId}</td>
+                <td className="td-input-display">{order.itemName}</td>
+                <td className="td-input-display">{order.quantity}</td>
+                <td className="action-column">
+                  <button className="details-button">Edit</button>
+                  <button className="delete-button">Delete</button>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
-
-      {openEdit && (
-        <EditUser
-          openEdit={openEdit}
-          setOpenEdit={setOpenEdit}
-          id={id}
-          loadPerson={loadPerson}
-        />
-      )}
     </div>
   );
 };
