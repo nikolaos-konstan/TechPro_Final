@@ -26,6 +26,7 @@ export const OrderDetailsTable = ({
           {filteredArray.map((orderDetails) => (
             <tr key={orderDetails.orderDetailsId}>
               <td className="td-input-display">
+                {orderDetails.order.people.personId}-
                 {orderDetails.order.orderId}-{orderDetails.orderDetailsId}
               </td>
               <td className="td-input-display">{orderDetails.item.itemName}</td>

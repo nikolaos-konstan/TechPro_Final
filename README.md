@@ -20,3 +20,5 @@ TO DO
 
 -add color dot in item name in orderdetails
 -align operators with quanity change in the edit
+
+-add edit during place order

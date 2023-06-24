@@ -674,7 +674,8 @@ input {
 }
 
 .place-order-grid-title {
-  background-color: #00a2e4;
+  font-family: "Palanquin", sans-serif;
+  color: var(--plastic02);
 }
 
 .add-btn {
@@ -711,11 +712,10 @@ input {
 .place-order-all-buttons {
   display: flex;
   flex-direction: column;
-  background-color: #00a2e4;
 }
 .place-order-grid-buttons {
   display: flex;
-  background-color: yellow;
+
   gap: 100px;
 }
 
@@ -733,6 +733,60 @@ input {
 
 .cancel-order-button:hover {
   background-color: var(--plastic03);
+}
+
+/*pop up modal*/
+
+.main-modal-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--beige03);
+  border-radius: 20px;
+  padding: 30px;
+  z-index: 1000;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+}
+
+.continue-current-order {
+  padding: 10px 10px;
+  border-radius: 10px;
+  background-color: var(--plastic035);
+  color: white;
+  margin-right: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  font-family: "Palanquin", sans-serif;
+  letter-spacing: 0.02rem;
+}
+.continue-current-order:hover {
+  background-color: var(--green07);
+}
+
+.cancel-current-order {
+  padding: 10px 10px;
+  border-radius: 10px;
+  background-color: var(--plastic035);
+  color: white;
+  margin-left: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  font-family: "Palanquin", sans-serif;
+  letter-spacing: 0.02rem;
+}
+
+.cancel-current-order:hover {
+  background-color: var(--beach03);
 }
 /*---------------------END OF PLACE ORDER PAGE*/
 /*PLACE ORDER PAGE----------------------------*/

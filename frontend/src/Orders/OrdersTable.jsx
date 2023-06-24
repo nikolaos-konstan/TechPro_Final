@@ -47,7 +47,9 @@ export const OrdersTable = ({
           <tbody>
             {orders.map((order, index) => (
               <tr key={order.orderId}>
-                <td className="td-input-display">{order.orderId}</td>
+                <td className="td-input-display">
+                  {order.people.personId}-{order.orderId}
+                </td>
                 <td className="td-input-display">
                   {order.people.firstName +
                     " " +

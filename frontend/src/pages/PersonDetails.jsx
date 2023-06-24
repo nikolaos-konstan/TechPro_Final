@@ -125,7 +125,9 @@ export const PersonDetails = ({ loadPeople, orderDetails, orders }) => {
           <tbody>
             {filteredOrdersArray.map((order, index) => (
               <tr key={index}>
-                <td className="td-input-display">{order.orderId}</td>
+                <td className="td-input-display">
+                  {order.personId}-{order.orderId}
+                </td>
                 <td className="td-input-display">{order.orderDate}</td>
 
                 <td className="action-column">
@@ -160,7 +162,9 @@ export const PersonDetails = ({ loadPeople, orderDetails, orders }) => {
           <tbody>
             {filteredDetailsArray.map((order, index) => (
               <tr key={index}>
-                <td className="td-input-display">{order.orderDetailsId}</td>
+                <td className="td-input-display">
+                  {order.personId}-{order.orderId}-{order.orderDetailsId}
+                </td>
                 <td className="td-input-display">{order.itemName}</td>
                 <td className="td-input-display">{order.quantity}</td>
                 <td className="action-column">
