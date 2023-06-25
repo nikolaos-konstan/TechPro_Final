@@ -1,14 +1,20 @@
 services:
-
   backend:
-    build: backend
+    image: backend
+    build:
+      context: ./backend
+    container_name: backend
     restart: always
+    volumes:
+      - ~/.m2:/root/.m2
     ports:
-     - "8090:8080"
+      - "8080:8080"
+    depends_on:
+      - db
     networks:
       - react-spring
       - spring-mysql
-  
+
   db:
     image: mysql:latest
     environment:
@@ -16,7 +22,7 @@ services:
       - MYSQL_ROOT_PASSWORD=root
     restart: always
     ports:
-      - '3306:3306'
+      - "3306:3306"
     volumes:
       - ./db/final_project_db.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
