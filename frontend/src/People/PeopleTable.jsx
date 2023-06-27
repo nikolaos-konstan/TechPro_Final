@@ -26,7 +26,7 @@ export const PeopleTable = ({ people, loadPeople }) => {
   };
   // End of Pagination
   const deletePerson = async (id) => {
-    await axios.delete(`http://localhost:8080/people/${id}`);
+    await axios.delete(`http://${window.location.hostname}:8080/people/${id}`);
     loadPeople();
   };
   return (

@@ -17,7 +17,7 @@ export const AddPerson = ({ loadPeople }) => {
 
   const onSubmitData = async (e) => {
     e.preventDefault();
-    await axios.post("http://localhost:8080/people", person);
+    await axios.post(`http://${window.location.hostname}:8080/people`, person);
     setPerson({
       firstName: "",
       lastName: "",

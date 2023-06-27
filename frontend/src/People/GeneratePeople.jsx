@@ -22,7 +22,10 @@ export const GeneratePeople = ({ loadPeople }) => {
 
   const generate = async (e) => {
     e.preventDefault();
-    await axios.post("http://localhost:8080/people", data[counter]);
+    await axios.post(
+      `http://${window.location.hostname}:8080/people`,
+      data[counter]
+    );
     counter === data.length - 1
       ? setCounter((prev) => 0)
       : setCounter((prev) => prev + 1);

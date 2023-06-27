@@ -23,7 +23,7 @@ export const PlaceOrder = ({ items, orders, loadOrders, loadOrderDetails }) => {
   }, []);
 
   const postOrder = async () => {
-    await axios.post("http://localhost:8080/orders", order);
+    await axios.post(`http://${window.location.hostname}:8080/orders`, order);
     loadOrders();
   };
 

@@ -45,7 +45,9 @@ export const PersonDetails = ({ loadPeople, orderDetails, orders }) => {
   }, []);
 
   const loadPerson = async (id) => {
-    const result = await axios.get(`http://localhost:8080/people/${id}`);
+    const result = await axios.get(
+      `http://${window.location.hostname}:8080/people/${id}`
+    );
     setPerson(result.data);
   };
 

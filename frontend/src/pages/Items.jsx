@@ -24,7 +24,7 @@ export const Items = ({ items, loadItems }) => {
 
   const addColor = async () => {
     if (inputValue.length === 6) {
-      await axios.post("http://localhost:8080/items", {
+      await axios.post(`http://${window.location.hostname}:8080/items`, {
         itemName: "#" + inputValue,
       });
       setInputValue("");
@@ -48,13 +48,13 @@ export const Items = ({ items, loadItems }) => {
 
   const postItem = async (e) => {
     e.preventDefault();
-    await axios.post("http://localhost:8080/items", item);
+    await axios.post(`http://${window.location.hostname}:8080/items`, item);
     generateRandomColor();
     loadItems();
   };
 
   const deleteItem = async (id) => {
-    await axios.delete(`http://localhost:8080/items/${id}`);
+    await axios.delete(`http://${window.location.hostname}:8080/items/${id}`);
     loadItems();
   };
 

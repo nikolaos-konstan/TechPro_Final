@@ -21,9 +21,12 @@ export const EditQuantity = ({
 
   ///Need to find a way to update the quantity change in OrderDetails
   const editQuantity = async (arr, id) => {
-    await axios.put(`http://localhost:8080/orderdetails/${id}`, {
-      quantity: counter,
-    });
+    await axios.put(
+      `http://${window.location.hostname}:8080/orderdetails/${id}`,
+      {
+        quantity: counter,
+      }
+    );
     loadOrderDetails();
     //setFilteredArray(arr.filter((obj) => obj.orderDetailsId !== id));
     setIsEdit((prev) => !prev);

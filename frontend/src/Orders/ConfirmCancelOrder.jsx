@@ -12,7 +12,9 @@ export const ConfirmCancelOrder = ({
   const deleteOrder = async () => {
     navigate("/");
     console.log(orders.at(-1).orderId);
-    await axios.delete(`http://localhost:8080/orders/${orders.at(-1).orderId}`);
+    await axios.delete(
+      `http://${window.location.hostname}:8080/orders/${orders.at(-1).orderId}`
+    );
     loadOrders();
   };
   return (

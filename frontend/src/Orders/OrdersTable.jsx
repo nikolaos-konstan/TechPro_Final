@@ -19,14 +19,16 @@ export const OrdersTable = ({
 
   //Delete method for OrderDetails
   const deleteOrderDetails = async (arr, id) => {
-    await axios.delete(`http://localhost:8080/orderdetails/${id}`);
+    await axios.delete(
+      `http://${window.location.hostname}:8080/orderdetails/${id}`
+    );
     loadOrderDetails();
     setFilteredArray(arr.filter((obj) => obj.orderDetailsId !== id));
   };
 
   //Delete method for Orders
   const deleteOrder = async (id) => {
-    await axios.delete(`http://localhost:8080/orders/${id}`);
+    await axios.delete(`http://${window.location.hostname}:8080/orders/${id}`);
     loadOrders();
     setFilteredArray([]);
   };

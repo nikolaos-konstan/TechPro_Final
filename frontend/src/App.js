@@ -24,19 +24,27 @@ function App() {
     loadOrderDetails();
   }, []);
   const loadPeople = async () => {
-    const result = await axios.get("http://localhost:8080/people/");
+    const result = await axios.get(
+      `http://${window.location.hostname}:8080/people/`
+    );
     setPeople(result.data);
   };
   const loadOrders = async () => {
-    const result = await axios.get("http://localhost:8080/orders/");
+    const result = await axios.get(
+      `http://${window.location.hostname}:8080/orders/`
+    );
     setOrders(result.data);
   };
   const loadItems = async () => {
-    const result = await axios.get("http://localhost:8080/items/");
+    const result = await axios.get(
+      `http://${window.location.hostname}:8080/items/`
+    );
     setItems(result.data);
   };
   const loadOrderDetails = async () => {
-    const result = await axios.get("http://localhost:8080/orderdetails/");
+    const result = await axios.get(
+      `http://${window.location.hostname}:8080/orderdetails/`
+    );
     setOrderDetails(result.data);
   };
 

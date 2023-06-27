@@ -38,7 +38,10 @@ export const OrderButtons = ({
   };
 
   const postOrderDetails = async (orderDetails) => {
-    await axios.post("http://localhost:8080/orderdetails", orderDetails);
+    await axios.post(
+      `http://${window.location.hostname}:8080/orderdetails`,
+      orderDetails
+    );
     loadOrderDetails();
     setIsDisabled(true);
     setCounter(0);

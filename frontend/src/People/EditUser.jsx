@@ -21,13 +21,18 @@ const EditUser = ({ openEdit, setOpenEdit, id, loadPerson }) => {
   //Need to find a way to refresh the new content, loadPerson() is loaded from Parent
   const onSubmitData = async (e) => {
     e.preventDefault();
-    await axios.put(`http://localhost:8080/people/${id}`, person);
+    await axios.put(
+      `http://${window.location.hostname}:8080/people/${id}`,
+      person
+    );
     loadPerson(id);
     setOpenEdit(false);
   };
 
   const loadPersonEdit = async () => {
-    const result = await axios.get(`http://localhost:8080/people/${id}`);
+    const result = await axios.get(
+      `http://${window.location.hostname}:8080/people/${id}`
+    );
     setPerson(result.data);
   };
 
