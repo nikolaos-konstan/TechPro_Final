@@ -15,6 +15,7 @@ Steps
     Build and run the application using Docker: docker compose up --build -d
 
 The application will now be running and accessible.
+
 Open [http://localhost:3000] to view it in your browser.
 Open [http://${VM's-IP}:3000] if you're running the containers in a VM.
 
