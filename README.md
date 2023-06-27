@@ -27,17 +27,15 @@ Technologies Used
 Further To-Do
 
     Change Swagger directory
-    Create an .env file
     Measure Performance
     Frontend:
         -Pagination
-        -Some more functionalities
-        -About Page
         -Convert time format
         -Add warning on delete of items that have dependencies
 
 Known Bugs/Problems
 
-    I had to write the ON DELETE CASCADE in the .sql because I couldn't do it in the backend
+    ON DELETE CASCADE happens in the .sql because it couldn't be done in the backend
+    Deleting entries too quickly may result in error
 
 Please report any bugs or problems you encounter by creating an issue in the project's GitHub repository.
