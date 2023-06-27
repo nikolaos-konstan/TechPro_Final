@@ -6,7 +6,12 @@ import "../App.css";
 import EditUser from "../People/EditUser";
 import { EditQuantityPersonal } from "../Orders/EditQuantityPersonal";
 
-export const PersonDetails = ({ loadOrderDetails, orderDetails, orders }) => {
+export const PersonDetails = ({
+  loadOrderDetails,
+  orderDetails,
+  orders,
+  loadOrders,
+}) => {
   const [filteredDetailsArray, setFilteredDetailsArray] = useState([]);
   const [filteredOrdersArray, setFilteredOrdersArray] = useState([]);
   const [person, setPerson] = useState({
@@ -70,6 +75,14 @@ export const PersonDetails = ({ loadOrderDetails, orderDetails, orders }) => {
     );
   };
   // end of functions and data for tables
+
+  //Delete function for Orders
+  const deleteOrder = async (arr, id) => {
+    await axios.delete(`http://${window.location.hostname}:8080/orders/${id}`);
+    loadOrders();
+    setFilteredOrdersArray(arr.filter((obj) => obj.orderId !== id));
+    setFilteredDetailsArray([]);
+  };
 
   //Delete function for Order Details
   const deleteOrderDetails = async (arr, id) => {
@@ -152,7 +165,14 @@ export const PersonDetails = ({ loadOrderDetails, orderDetails, orders }) => {
                   >
                     Details
                   </button>
-                  <button className="delete-button">Delete</button>
+                  <button
+                    onClick={() =>
+                      deleteOrder(filteredOrdersArray, order.orderId)
+                    }
+                    className="delete-button"
+                  >
+                    Delete
+                  </button>
                 </td>
               </tr>
             ))}
