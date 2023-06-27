@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import "../App.css";
 import EditUser from "../People/EditUser";
 
-export const PersonDetails = ({ loadPeople, orderDetails, orders }) => {
+export const PersonDetails = ({ loadOrderDetails, orderDetails, orders }) => {
   const [filteredDetailsArray, setFilteredDetailsArray] = useState([]);
   const [filteredOrdersArray, setFilteredOrdersArray] = useState([]);
   const [person, setPerson] = useState({
@@ -70,6 +70,16 @@ export const PersonDetails = ({ loadPeople, orderDetails, orders }) => {
   };
   // end of functions and data for tables
 
+  //Delete function for Order Details
+  const deleteOrderDetails = async (arr, id) => {
+    await axios.delete(
+      `http://${window.location.hostname}:8080/orderdetails/${id}`
+    );
+    //loadOrderDetails();
+    setFilteredDetailsArray(arr.filter((obj) => obj.orderDetailsId !== id));
+    loadOrderDetails();
+  };
+  //
   return (
     <div className="pd-container">
       <div className="card">
@@ -171,7 +181,17 @@ export const PersonDetails = ({ loadPeople, orderDetails, orders }) => {
                 <td className="td-input-display">{order.quantity}</td>
                 <td className="action-column">
                   <button className="details-button">Edit</button>
-                  <button className="delete-button">Delete</button>
+                  <button
+                    onClick={() =>
+                      deleteOrderDetails(
+                        filteredDetailsArray,
+                        order.orderDetailsId
+                      )
+                    }
+                    className="delete-button"
+                  >
+                    Delete
+                  </button>
                 </td>
               </tr>
             ))}
