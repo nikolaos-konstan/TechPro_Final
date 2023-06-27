@@ -789,4 +789,16 @@ input {
   background-color: var(--beach03);
 }
 /*---------------------END OF PLACE ORDER PAGE*/
-/*PLACE ORDER PAGE----------------------------*/
+/*ABOUT PAGE----------------------------*/
+.about-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: var(--beige02);
+  border-radius: 10px;
+}
+
+.about-p {
+  text-align: left;
+  font-family: "Palanquin", sans-serif;
+}
