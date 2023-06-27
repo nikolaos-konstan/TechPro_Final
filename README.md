@@ -35,7 +35,6 @@ Further To-Do
     Measure Performance
     Frontend:
         -Pagination
-        -Convert time format
         -Add warning on delete of items that have dependencies
 
 Known Bugs/Problems
