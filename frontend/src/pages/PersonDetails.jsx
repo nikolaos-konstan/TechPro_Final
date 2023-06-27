@@ -154,7 +154,9 @@ export const PersonDetails = ({
                 <td className="td-input-display">
                   {order.people.personId}-{order.orderId}
                 </td>
-                <td className="td-input-display">{order.orderDate}</td>
+                <td className="td-input-display-time">
+                  {order.orderDate.replace("T", " ").substring(0, 16)}
+                </td>
 
                 <td className="action-column">
                   <button

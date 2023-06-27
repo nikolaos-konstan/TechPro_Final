@@ -394,6 +394,11 @@ tbody td {
   word-break: break-all;
 }
 
+.td-input-display-time {
+  letter-spacing: 0.05em;
+  font-family: "Mukta", sans-serif;
+}
+
 tbody tr:nth-child(even) {
   background-color: var(--green01);
 }
