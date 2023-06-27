@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 
 import "../App.css";
 import EditUser from "../People/EditUser";
+import { EditQuantityPersonal } from "../Orders/EditQuantityPersonal";
 
 export const PersonDetails = ({ loadOrderDetails, orderDetails, orders }) => {
   const [filteredDetailsArray, setFilteredDetailsArray] = useState([]);
@@ -16,23 +17,23 @@ export const PersonDetails = ({ loadOrderDetails, orderDetails, orders }) => {
 
   //Table Content start
   //Reconstruct Arrays for ease of use
-  const restructureDetailsdArray = orderDetails.map((obj) => {
-    return {
-      personId: obj.order.people.personId,
-      orderId: obj.order.orderId,
-      orderDetailsId: obj.orderDetailsId,
-      itemId: obj.item.itemId,
-      itemName: obj.item.itemName,
-      quantity: obj.quantity,
-    };
-  });
-  const restructureOrdersdArray = orders.map((obj) => {
-    return {
-      personId: obj.people.personId,
-      orderId: obj.orderId,
-      orderDate: obj.orderDate,
-    };
-  });
+  // const restructureDetailsdArray = orderDetails.map((obj) => {
+  //   return {
+  //     personId: obj.order.people.personId,
+  //     orderId: obj.order.orderId,
+  //     orderDetailsId: obj.orderDetailsId,
+  //     itemId: obj.item.itemId,
+  //     itemName: obj.item.itemName,
+  //     quantity: obj.quantity,
+  //   };
+  // });
+  // const restructureOrdersdArray = orders.map((obj) => {
+  //   return {
+  //     personId: obj.people.personId,
+  //     orderId: obj.orderId,
+  //     orderDate: obj.orderDate,
+  //   };
+  // });
   // Table content End
 
   const [openEdit, setOpenEdit] = useState(false);
@@ -42,7 +43,7 @@ export const PersonDetails = ({ loadOrderDetails, orderDetails, orders }) => {
 
   useEffect(() => {
     loadPerson(id);
-  }, []);
+  }, [id]);
 
   const loadPerson = async (id) => {
     const result = await axios.get(
@@ -60,12 +61,12 @@ export const PersonDetails = ({ loadOrderDetails, orderDetails, orders }) => {
   // };
   const filterOrderDetailsByOrderId = (arr, orderid) => {
     setFilteredDetailsArray(
-      arr.filter((obj) => obj.orderId === Number(orderid))
+      arr.filter((obj) => obj.order.orderId === Number(orderid))
     );
   };
   const filterOrdersByPersonId = (arr, personid) => {
     setFilteredOrdersArray(
-      arr.filter((obj) => obj.personId === Number(personid))
+      arr.filter((obj) => obj.people.personId === Number(personid))
     );
   };
   // end of functions and data for tables
@@ -110,7 +111,7 @@ export const PersonDetails = ({ loadOrderDetails, orderDetails, orders }) => {
 
           <button
             className="form-submit-button"
-            onClick={() => filterOrdersByPersonId(restructureOrdersdArray, id)}
+            onClick={() => filterOrdersByPersonId(orders, id)}
           >
             Orders
           </button>
@@ -138,7 +139,7 @@ export const PersonDetails = ({ loadOrderDetails, orderDetails, orders }) => {
             {filteredOrdersArray.map((order, index) => (
               <tr key={index}>
                 <td className="td-input-display">
-                  {order.personId}-{order.orderId}
+                  {order.people.personId}-{order.orderId}
                 </td>
                 <td className="td-input-display">{order.orderDate}</td>
 
@@ -146,10 +147,7 @@ export const PersonDetails = ({ loadOrderDetails, orderDetails, orders }) => {
                   <button
                     className="details-button"
                     onClick={() =>
-                      filterOrderDetailsByOrderId(
-                        restructureDetailsdArray,
-                        order.orderId
-                      )
+                      filterOrderDetailsByOrderId(orderDetails, order.orderId)
                     }
                   >
                     Details
@@ -172,34 +170,29 @@ export const PersonDetails = ({ loadOrderDetails, orderDetails, orders }) => {
             </tr>
           </thead>
           <tbody>
-            {filteredDetailsArray.map((order, index) => (
-              <tr key={index}>
+            {filteredDetailsArray.map((orderDetails) => (
+              <tr key={orderDetails.orderDetailsId}>
                 <td className="td-input-display">
-                  {order.personId}-{order.orderId}-{order.orderDetailsId}
+                  {orderDetails.order.people.personId}-
+                  {orderDetails.order.orderId}-{orderDetails.orderDetailsId}
                 </td>
-                <td className="td-input-display">{order.itemName}</td>
-                <td className="td-input-display">{order.quantity}</td>
-                <td className="action-column">
-                  <button className="details-button">Edit</button>
-                  <button
-                    onClick={() =>
-                      deleteOrderDetails(
-                        filteredDetailsArray,
-                        order.orderDetailsId
-                      )
-                    }
-                    className="delete-button"
-                  >
-                    Delete
-                  </button>
+                <td className="td-input-display">
+                  {orderDetails.item.itemName}
                 </td>
+                <EditQuantityPersonal
+                  orderDetails={orderDetails}
+                  filteredDetailsArray={filteredDetailsArray}
+                  deleteOrderDetails={deleteOrderDetails}
+                  loadOrderDetails={loadOrderDetails}
+                  setFilteredDetailsArray={setFilteredDetailsArray}
+                />
               </tr>
             ))}
           </tbody>
         </table>
         <p>
-          *edit and delete missing functionality here. They work in the "All
-          Orders" page
+          *Edit works but it doesn't refresh automatically yet, click on the
+          Details btn on the table on the left
         </p>
       </div>
     </div>

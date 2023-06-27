@@ -31,7 +31,7 @@ export const GeneratePeople = ({ loadPeople }) => {
       : setCounter((prev) => prev + 1);
     loadPeople();
   };
-  //const generate = () => console.log(data);
+
   return (
     <div className="grid-item-3-people">
       <button className="generate-people-button" onClick={generate}>

@@ -43,7 +43,7 @@ export const OrderDetailsTable = ({
       </table>
       <p className="Remove Later">
         *Edit works but it doesn't refresh automatically yet, click on the
-        Details btn
+        Details btn on the table on the left
       </p>
     </div>
   );

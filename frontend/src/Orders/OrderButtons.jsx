@@ -17,7 +17,6 @@ export const OrderButtons = ({
   const [className, setClassName] = useState("add-btn");
   const increaseCount = () => {
     setCounter((prev) => prev + 1);
-    console.log(orders.at(-1).orderId);
   };
 
   const decreaseCount = () => {
