@@ -14,23 +14,23 @@ public class OrderController {
 
     @Autowired
     private OrderRepository orderRepository;
-
+    // Create a new order
     @PostMapping("/orders")
     Order newOrder(@RequestBody Order newOrder) {
         return orderRepository.save(newOrder);
     }
-
+    // Retrieve a list of all orders
     @GetMapping("/orders/")
     List<Order> getAllOrders(){
         return orderRepository.findAll();
     }
-
+    // Retrieve an order by ID
     @GetMapping("/orders/{id}")
     Order getOrdersById(@PathVariable Integer id){
         return orderRepository.findById(id)
                 .orElseThrow(()->new OrderNotFoundException(id));
     }
-
+    // Delete an order by ID
     @DeleteMapping("/orders/{id}")
     String deleteOrder(@PathVariable Integer id){
         if(!orderRepository.existsById(id)){

@@ -15,22 +15,26 @@ public class PeopleController {
     @Autowired
     private PeopleRepository peopleRepository;
 
+    // Create a new person
     @PostMapping("/people")
     People newPeople(@RequestBody People newPeople) {
         return peopleRepository.save(newPeople);
     }
 
+    // Retrieve a list of all people
     @GetMapping("/people/")
     List<People> getAllPeople(){
         return peopleRepository.findAll();
     }
 
+    // Retrieve a person by ID
     @GetMapping("/people/{id}")
     People getPeopleById(@PathVariable Integer id){
         return peopleRepository.findById(id)
                 .orElseThrow(()->new PersonNotFoundException(id));
     }
 
+    // Update a person by ID
     @PutMapping("/people/{id}")
     People updatePeople(@RequestBody People newPeople, @PathVariable Integer id){
             return peopleRepository.findById(id)
@@ -43,6 +47,7 @@ public class PeopleController {
                     }).orElseThrow(()->new PersonNotFoundException(id));
     }
 
+    // Delete a person by ID
     @DeleteMapping("/people/{id}")
     String deletePeople(@PathVariable Integer id){
         if(!peopleRepository.existsById(id)){

@@ -20,6 +20,8 @@ Open [http://localhost:3000] to view it in your browser.
 
 Open [http://${VM's-IP}:3000] if you're running the containers in a VM.
 
+You can run swagger in a similar way: ${localhost or ip}:8080/swagger-ui/index.html
+
 Technologies Used
 
     MySQL

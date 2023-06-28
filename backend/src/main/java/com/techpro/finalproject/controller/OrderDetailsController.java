@@ -14,22 +14,23 @@ public class OrderDetailsController {
     @Autowired
     private OrderDetailsRepository orderDetailsRepository;
 
+        // Create a new order detail
     @PostMapping("/orderdetails")
     OrderDetails newOrderDetails(@RequestBody OrderDetails newOrderDetails) {
         return orderDetailsRepository.save(newOrderDetails);
     }
-
+    // Retrieve a list of all order details
     @GetMapping("/orderdetails/")
     List<OrderDetails> getAllOrderDetails(){
         return orderDetailsRepository.findAll();
     }
-
+    // Retrieve an order detail by ID
     @GetMapping("/orderdetails/{id}")
     OrderDetails getOrderDetailsById(@PathVariable Integer id){
         return orderDetailsRepository.findById(id)
                 .orElseThrow(()->new OrderDetailsNotFoundException(id));
     }
-
+    // Update an order detail by ID
     @PutMapping("/orderdetails/{id}")
     OrderDetails updateOrderDetails(@RequestBody OrderDetails newOrderDetails, @PathVariable Integer id){
         return orderDetailsRepository.findById(id)
@@ -39,7 +40,7 @@ public class OrderDetailsController {
                     return orderDetailsRepository.save(orderDetails);
                 }).orElseThrow(()->new OrderDetailsNotFoundException(id));
     }
-
+    // Delete an order detail by ID
     @DeleteMapping("/orderdetails/{id}")
     String deleteOrderDetails(@PathVariable Integer id){
         if(!orderDetailsRepository.existsById(id)){
