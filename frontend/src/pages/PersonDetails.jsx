@@ -146,7 +146,7 @@ export const PersonDetails = ({
           <tbody>
             {filteredOrdersArray.map((order, index) => (
               <tr key={index}>
-                <td className="td-input-display">
+                <td className="td-input-display-time">
                   {order.people.personId}-{order.orderId}
                 </td>
                 <td className="td-input-display-time">
@@ -189,11 +189,11 @@ export const PersonDetails = ({
           <tbody>
             {filteredDetailsArray.map((orderDetails) => (
               <tr key={orderDetails.orderDetailsId}>
-                <td className="td-input-display">
+                <td className="td-input-display-time">
                   {orderDetails.order.people.personId}-
                   {orderDetails.order.orderId}-{orderDetails.orderDetailsId}
                 </td>
-                <td className="td-input-display">
+                <td className="td-input-display-time">
                   {orderDetails.item.itemName}
                   <svg
                     style={{ color: orderDetails.item.itemName }}

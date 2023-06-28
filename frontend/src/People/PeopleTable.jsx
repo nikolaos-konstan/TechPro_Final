@@ -47,7 +47,7 @@ export const PeopleTable = ({ people, loadPeople }) => {
         <tbody>
           {currentUsers.map((person, index) => (
             <tr key={person.personId}>
-              <td className="td-input-display">{person.personId}</td>
+              <td className="td-input-display-time">{person.personId}</td>
               <td className="td-input-display">{person.firstName}</td>
               <td className="td-input-display">{person.lastName}</td>
               <td className="td-input-display">{person.email}</td>
