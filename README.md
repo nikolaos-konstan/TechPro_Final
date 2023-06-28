@@ -35,6 +35,7 @@ Further To-Do
 
     Change Swagger directory
     Measure Performance
+    "All Orders" page needs to refresh after deleting an item from "All Items" page. Right now this results in a bug of showing the item untill you manually refresh
     Frontend:
         -Pagination
         -Add warning on delete of items that have dependencies
@@ -43,5 +44,3 @@ Known Bugs/Problems
 
     ON DELETE CASCADE happens in the .sql because it couldn't be done in the backend
     Deleting entries too quickly may result in error
-
-Please report any bugs or problems you encounter by creating an issue in the project's GitHub repository.
