@@ -8,8 +8,6 @@ export const OrderDetailsTable = ({
   loadOrderDetails,
   setFilteredArray,
 }) => {
-  //State to be able to edit quantity of items in orderDetails
-
   return (
     <div>
       <table>

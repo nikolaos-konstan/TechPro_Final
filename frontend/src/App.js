@@ -17,6 +17,7 @@ function App() {
   const [items, setItems] = useState([]);
   const [orderDetails, setOrderDetails] = useState([]);
 
+  //call all the people, orders, orderdetails and items from the database
   useEffect(() => {
     loadPeople();
     loadOrders();

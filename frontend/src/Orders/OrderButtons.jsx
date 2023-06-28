@@ -35,7 +35,7 @@ export const OrderButtons = ({
     setClassName("added-btn");
     postOrderDetails(orderDetails);
   };
-
+  //creates orderDetails
   const postOrderDetails = async (orderDetails) => {
     await axios.post(
       `http://${window.location.hostname}:8080/orderdetails`,

@@ -8,6 +8,7 @@ export const ConfirmCancelOrder = ({
   loadOrders,
   orders,
 }) => {
+  //takes you to a certain path
   let navigate = useNavigate();
   const deleteOrder = async () => {
     navigate("/");

@@ -11,9 +11,9 @@ export const PlaceOrder = ({ items, orders, loadOrders, loadOrderDetails }) => {
   const effectRan = useRef(false);
   const { id } = useParams();
   const order = { people: { personId: Number(id) } };
-  //Open Modal Warning
+  //Open Modal Warning usestate
   const [openEdit, setOpenEdit] = useState(false);
-
+  // create the order when the page loads
   useEffect(() => {
     if (effectRan.current === false) {
       postOrder();
@@ -26,7 +26,7 @@ export const PlaceOrder = ({ items, orders, loadOrders, loadOrderDetails }) => {
     await axios.post(`http://${window.location.hostname}:8080/orders`, order);
     loadOrders();
   };
-
+  // function to open the modal
   const cancelOrder = () => {
     openModal();
   };

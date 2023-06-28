@@ -45,7 +45,7 @@ export const PersonDetails = ({
 
   const { firstName, lastName, email } = person;
   const { id } = useParams();
-
+  //loads the person with that id, taken from the parameters of the url of the page
   useEffect(() => {
     loadPerson(id);
   }, [id]);
@@ -59,11 +59,6 @@ export const PersonDetails = ({
 
   // Start of functions and data for tables
   // id from useParam is a string, needs to be transformed in to a number
-  // const filterOrderDetailsByPersonId = (arr, personid) => {
-  //   setFilteredDetailsArray(
-  //     arr.filter((obj) => obj.personId === Number(personid))
-  //   );
-  // };
   const filterOrderDetailsByOrderId = (arr, orderid) => {
     setFilteredDetailsArray(
       arr.filter((obj) => obj.order.orderId === Number(orderid))

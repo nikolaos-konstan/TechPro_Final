@@ -7,7 +7,7 @@ export const Items = ({ items, loadItems }) => {
   const [item, setItem] = useState({
     itemName: "",
   });
-  //I generate a color straight away when the page loads
+  //I generate a color straight away when the page loads to be ready to use
   useEffect(() => {
     generateRandomColor();
   }, []);
@@ -21,7 +21,7 @@ export const Items = ({ items, loadItems }) => {
     setInputValue(hexNumber);
     loadItems();
   };
-
+  //Create a new color (item) by putting input
   const addColor = async () => {
     if (inputValue.length === 6) {
       await axios.post(`http://${window.location.hostname}:8080/items`, {
@@ -32,7 +32,7 @@ export const Items = ({ items, loadItems }) => {
     }
   };
   //Colour Input End
-
+  //Function to generate random color, the first one is already set when the page is loaded and ready to use
   const generateRandomColor = () => {
     const letters = "0123456789ABCDEF";
     let color = "#";
@@ -45,14 +45,14 @@ export const Items = ({ items, loadItems }) => {
       itemName: color,
     });
   };
-
+  //Create a new color (item) by generating it
   const postItem = async (e) => {
     e.preventDefault();
     await axios.post(`http://${window.location.hostname}:8080/items`, item);
     generateRandomColor();
     loadItems();
   };
-
+  //delete an item
   const deleteItem = async (id) => {
     await axios.delete(`http://${window.location.hostname}:8080/items/${id}`);
     loadItems();
